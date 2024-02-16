@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block title %}
+    Journey Planner
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Route Planner</h1>
+    <div class="form">
+        <label for="source">Source:</label>
+        <input type="text" id="source" name="source">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination">
+        <button onclick="findRoutes()">Find Routes</button>
+    </div>
+    <div id="routes"></div>
+</div>
+<script src="script.js"></script>
+{% endblock %}

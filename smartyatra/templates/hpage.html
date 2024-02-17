@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/hpage.css' %}">
+{% endblock %}
+
+{% block title %}
+    SmartYatra
+{% endblock %}
+
+{% block content %}
+<header class="hero-section">
+</header>
+<div class="description">
+    <h1>SmartYatra</h1>
+    <h3>Making public transit accessible</h3>
+</div>
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+     {% if message.tags %}  {% endif %} {{ message }}
+     </div>
+    {% endfor %}
+{% endif %}
+<section class="product">
+<h2 class="product-category"><strong>features</strong></h2>
+
+
+<div class="container features">
+    <div class="row">
+    
+     </div>
+    </div>
+</section>
+{% endblock %}

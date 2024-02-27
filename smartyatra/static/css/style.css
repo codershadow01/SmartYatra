@@ -12,6 +12,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #052d42;
+  background-color: rgb(235, 226, 226);
 }
 
 a {
@@ -44,7 +45,7 @@ h6,
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: #68A4C4;
+  background: #62d450;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -79,7 +80,7 @@ h6,
 }
 
 #header.header-transparent {
-  background: #052d42;
+  background: none;
 }
 
 #header.header-scrolled {
@@ -348,13 +349,19 @@ h6,
   top: 0;
   width: 130%;
   height: 95%;
-  background: linear-gradient(to right, rgba(30, 67, 86, 0.8), rgba(30, 67, 86, 0.6)), url("../img/bgimage.jpg") center top no-repeat;
+  /* background: linear-gradient(to right, #052d42, rgba(30, 67, 86, 0.6)), url("../img/bg2.jpg") center top no-repeat; */
+  /* background-color: #052d42; */
+  /* background-size: 100% 100%; */
+  min-height: 100%;
+  background: url("../img/bg3.jpg");
+  background-size: cover;
+  box-shadow: inset 0 0 0 2000px #052d42d3;
   z-index: 0;
-  border-radius: 0 0 50% 50%;
-  transform: translateX(-50%) rotate(0deg);
+  border-radius: 0 0 50% 50%; /*to get the curved shape*/
+  transform: translateX(-50%) rotate(0deg); 
 }
 
-#hero::before {
+/* #hero::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -366,7 +373,7 @@ h6,
   z-index: 0;
   border-radius: 0 0 50% 50%;
   transform: translateX(-50%) translateY(18px) rotate(2deg);
-}
+} */
 
 #hero .carousel-container {
   display: flex;
@@ -656,6 +663,8 @@ section {
 --------------------------------------------------------------*/
 .services {
   padding-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .services .icon-box {
@@ -900,8 +909,11 @@ section {
 /*--------------------------------------------------------------
 # Features
 --------------------------------------------------------------*/
-.features .row+.row {
+.features .row{
+  /* background-color: grey; */
   margin-top: 100px;
+  border: #18d26e;
+  /* box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); */
 }
 
 .features h3 {

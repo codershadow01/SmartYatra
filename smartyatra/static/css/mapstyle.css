@@ -1,0 +1,66 @@
+#heading{
+    color: white;
+}
+#main-feature{
+    margin-top: 80px;
+}
+
+.detail{
+    background-color: #7c92bd;
+}
+.detail .container1{
+    position: relative;
+    overflow: hidden;
+    margin: 88px 23px 180px 23px;
+    background: #052d42;
+    box-shadow: 0 5px 26px 0 rgba(68, 88, 144, 0.14);
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    border: 0px solid #fff;
+}
+
+#formset .container{
+    background: #eeeef1;
+}
+.form1 {
+    max-width: 400px;
+    margin: 0 53px 0 38px;
+}
+  
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+}
+  
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+  
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+  
+button:hover {
+    background-color: #555;
+}
+
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    
+  
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+}

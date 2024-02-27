@@ -1,9 +1,0 @@
-.hero-section{
-    width: 100%;
-    height: calc(100vh - 10px);
-    background-image: url('/media/bgimage.jpg');
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}

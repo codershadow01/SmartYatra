@@ -4,6 +4,7 @@ import geohash
 import math
 from .models import Nodes
 from .models import Edges
+from geopy.geocoders import Nominatim
 import requests
 
 
@@ -139,16 +140,10 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     # print()
     return res
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
+def address_to_latlng(address):
+        geolocator = Nominatim(user_agent="myGeocoder")
+        location = geolocator.geocode(address)
+        if location:
+            return location.latitude, location.longitude
+        else:
+            return None, None

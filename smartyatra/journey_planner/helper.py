@@ -1,35 +1,26 @@
-import pandas as pd  # You might use a proper SQL database instead
+import pandas as pd
 from geohash import neighbors 
 import geohash
 import math
 from .models import Nodes
 from .models import Edges
 import requests
-from queue import Queue
 
 
 def get_geohash(node):
     return node.geohash
 
-
-# df = pd.DataFrame(list(Nodes.objects.all().values()))
 df = pd.DataFrame(Nodes.objects.all(),columns=["Nodes"])
 df['geohash'] = df['Nodes'].apply(get_geohash)
 
 # //to find nearby public transport services within 2 km radius
 def find_nearest_points(latitude, longitude, precision=7, max_distance=None):
     center_geohash = geohash.encode(latitude, longitude, precision=precision)
-    # cur_node = Nodes.objects.create(name='source', lat=latitude, lon=longitude, geohash=center_geohash)
-    # print(center_geohash)
     neighbor_geohashes = neighbors(center_geohash) + [center_geohash]
 
     # Query your database using the geohashes
-    # print("Df")
-    # print(df)
     nearby_points = df[df['geohash'].isin(neighbor_geohashes)]
-    # nearby_nodes = Nodes.objects.filter(geohash=neighbor_geohashes)
-    # print("Hello",nearby_points)
-    # print(neighbor_geohashes)
+
     # Calculate exact distances and filter by max_distance
     if max_distance:
         nearby_points['distance'] = nearby_points.apply(
@@ -37,9 +28,8 @@ def find_nearest_points(latitude, longitude, precision=7, max_distance=None):
             axis=1
         )
         nearby_points = nearby_points[nearby_points['distance'] <= max_distance]
-    # add_edge(nearby_points, cur_node)
-    # return nearby_points.to_dict('records')
-    return nearby_points 
+
+    return nearby_points #returns a dataframe type response with node objects and its geohash.
 
 
 #to calculate distance between two points
@@ -108,39 +98,45 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     src = Nodes.objects.create(name='source', lat=src1, lon=src2, geohash=center_geohash)
     dest = Nodes.objects.create(name='destination', lat=dest1, lon=dest2, geohash=center_geohash1)
     
-
-
-    print("In Search Algo Section")
-    # print(arr1)
     for i in range(len(arr1)):
-        # print(arr1.iloc[i]['Nodes'])
-        q.append((src,arr1.iloc[i]['Nodes']))
+        temp = []
+        q.append((src,arr1.iloc[i]['Nodes'],temp))  #src, rto
 
-    # print(q)
-    
     while q:
         cur = q[0]
         q.pop(0)
 
-        # obj = cur[2]
-        if cur[1].lat==dest1 and cur[1].lon==dest2:
-            res.append((1,cur[0],cur[1]))
+        if cur[1].lat==dest1 and cur[1].lon==dest2: 
+            cur[2].append((1, cur[0], cur[1]))
+            res.append(cur[2])
             continue
-
+            
+        flag = 0
         for i in range(len(arr2)):
             obj = arr2.iloc[i]['Nodes']
             if(obj.lat == cur[1].lat and obj.lon == cur[1].lon):
-                res.append((1,cur[0],cur[1]))
-                res.append((0,cur[1],dest))
+                cur[2].append((1,cur[0],cur[1]))
+                cur[2].append((0,cur[1],dest))
+                res.append(cur[2])
+                flag = 1
                 break
 
-
+        if(flag == 1):
+            continue  
+        
+        cur[2].append((1, cur[0], cur[1]))
         neighbors = cur[1].outgoing_edges.all() 
+
+        # print("neighbours")
+        # print(neighbors)
         
         for i in neighbors:
-            q.append((cur[1],i.node2))
+            q.append((cur[1],i.node2,cur[2]))
+
+        # print(res)
 
 
+    # print()
     return res
 
 

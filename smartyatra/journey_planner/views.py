@@ -13,6 +13,12 @@ class planner(View):
     def post(self,request):
         source = request.POST.get('source')
         destination = request.POST.get('destination')
+        arr1 = nearby_points(source)
+        arr2 = nearby_points(destination)
+
+        res = search_algo(source,destination,arr1,arr2)
+
+        return render(request,'planner.html',res)
 
 
     def search_algo(source,destination,arr1,arr2):

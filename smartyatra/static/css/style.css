@@ -13,6 +13,7 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #052d42;
   background-color: rgb(235, 226, 226);
+  background-color: rgb(235, 226, 226);
 }
 
 a {
@@ -80,11 +81,7 @@ h6,
 }
 
 #header.header-transparent {
-<<<<<<< HEAD
   background: #025464;
-=======
-  background: none;
->>>>>>> d4cc0dc64c41d35c74562b3cc7a9159b49420957
 }
 
 #header.header-scrolled {

@@ -6,6 +6,7 @@ from .models import Nodes
 from .models import Edges
 from geopy.geocoders import Nominatim
 import requests
+from opencage.geocoder import OpenCageGeocode
 
 
 def get_geohash(node):
@@ -17,10 +18,13 @@ df['geohash'] = df['Nodes'].apply(get_geohash)
 # //to find nearby public transport services within 2 km radius
 def find_nearest_points(latitude, longitude, precision=7, max_distance=None):
     center_geohash = geohash.encode(latitude, longitude, precision=precision)
+    # print(center_geohash)
     neighbor_geohashes = neighbors(center_geohash) + [center_geohash]
+    # print(neighbor_geohashes)
 
     # Query your database using the geohashes
     nearby_points = df[df['geohash'].isin(neighbor_geohashes)]
+    # print(nearby_points)
 
     # Calculate exact distances and filter by max_distance
     if max_distance:
@@ -140,10 +144,35 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     # print()
     return res
 
+
 def address_to_latlng(address):
-        geolocator = Nominatim(user_agent="myGeocoder")
-        location = geolocator.geocode(address)
-        if location:
-            return location.latitude, location.longitude
-        else:
-            return None, None
+    # OAuth API token endpoint
+    # token_url = "https://outpost.mapmyindia.com/api/security/oauth/token"
+
+    # # Your client_id and client_secret
+    # client_id = "YOUR_CLIENT_ID"
+    # client_secret = "YOUR_CLIENT_SECRET"
+
+    # # Request access token
+    # data = {
+    #     "grant_type": "client_credentials",
+    #     "client_id": client_id,
+    #     "client_secret": client_secret
+    # }
+    # response = requests.post(token_url, data=data)
+
+    # if response.status_code == 200:
+    #     access_token = response.json()["access_token"]
+    #     token_type = response.json()["token_type"]
+    #     authorization_header = f"{token_type} {access_token}"
+    # else:
+    #     print("Failed to obtain access token.")
+    key = '207664d26b1e4d95bb9d17e81820c207'
+    geocoder = OpenCageGeocode(key)
+
+    # query = u'Bosutska ulica 10, Trnje, Zagreb, Croatia'
+
+# no need to URI encode query, module does that for you
+    results = geocoder.geocode(address)
+
+    return results[0]['geometry']['lat'],results[0]['geometry']['lng']

@@ -31,6 +31,7 @@ SmartPlanner
       </div>
       <div class="box1">
         <div class="container2">
+<<<<<<< Updated upstream
           <form class="form1" action="{% url "planner" %}" method="post">
             {% csrf_token %}
             <div class="Col-1">
@@ -39,28 +40,59 @@ SmartPlanner
               <datalist id="source_node">
                 {% for node in nodes %}
                 <option value="{{node.name}}">{{node.name}}</option>
+=======
+
+
+
+          <form class="form1" action="{% url "planner" %}" method="post">
+            {% csrf_token %} 
+            <div class="Col-1">
+              <input type="text" class="form-control" list="source_node" id="source" name="source" placeholder="Enter your Location..."/>
+              <datalist id="source_node">
+                {% for node in nodes %}
+                <option   value="{{node.name}}">{{node.name}}</option>
+>>>>>>> Stashed changes
                 {% endfor %}
               </datalist>
             </div>
+
+
             <div class="Col-1">
+<<<<<<< Updated upstream
               <input type="text" class="form-control" list="destination_node" id="destination" name="destination"
                 placeholder="Enter your destination..." />
               <datalist id="destination_node">
                 {% for node in nodes %}
                 <option value="{{node.name}}">{{node.name}}</option>
+=======
+              <input type="text" class="form-control" list="destination_node" id="destination" name="destination" placeholder="Enter your destination..."/>
+              <datalist id="destination_node">
+                {% for node in nodes %}
+                <option   value="{{node.name}}">{{node.name}}</option>
+>>>>>>> Stashed changes
                 {% endfor %}
               </datalist>
             </div>
+
+
+
             <div class="Col-2">
               <div class="d-grid gap-2 col-3 mx-auto">
                 <button class="btn btn-success" type="submit">Go</button>
               </div>
             </div>
-          </form>
+          </form> 
+          
+          
+
         </div>
       </div>
       <!-- this is time showing for cycle,walk,bike -->
       {% if routes %}
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
       <div class="box1">
         <div class="container2">
           <div class="col1">
@@ -110,7 +142,12 @@ SmartPlanner
       </div>
       {% endif %}
     </div>
+<<<<<<< Updated upstream
     <!-- this container for showing the map -->
+=======
+
+    
+>>>>>>> Stashed changes
     <div class="map-container">
       <div class="map-column">
         <div id="map">
@@ -125,8 +162,17 @@ SmartPlanner
   </div>
 </main>
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 {% endblock %}
 
 <script type="text/javascript">
   $(".chosen").chosen();
+<<<<<<< Updated upstream
 </script>
+=======
+  </script>
+>>>>>>> Stashed changes

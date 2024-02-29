@@ -1,21 +1,26 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     // Dummy data
-    const dummyData = [
-      {"id": 1, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-      {"id": 2, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-      {"id": 3, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-      {"id": 4, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-      {"id": 5, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-      {"id": 6, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-      {"id": 7, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-      {"id": 8, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
-    ];
-  
+    // const dummyData = [
+    //   {"id": 1, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    //   {"id": 2, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    //   {"id": 3, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    //   {"id": 4, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    //   {"id": 5, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    //   {"id": 6, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    //   {"id": 7, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    //   {"id": 8, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},
+    // ];
+    // var routesDataElement = document.getElementById('routes-data');
+    // if (routesDataElement) {
+    //   var routesData = JSON.parse(routesDataElement.value);
+    //   console.log(routesData);  // Use routesData in your JavaScript
+    // }
     // Function to insert data into the table
-    function insertData() {
+    function insertData(routesData) {
+      console.log(routesData)
       const tableBody = document.getElementById('data-body');
-      dummyData.forEach(item => {
+      routesData.forEach(item => {
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>${item.mode}</td>

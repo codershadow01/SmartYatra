@@ -78,7 +78,7 @@ SmartPlanner
               <img class="img11" src="\static\img\walk1.png" alt="">
             </div>
             <div class="timewa">
-              <p style="color: white;">30 min</p>
+              <p style="color: white;">30 min</p> 
             </div>
           </div>
           <div class="col2">
@@ -135,10 +135,13 @@ SmartPlanner
   </div>
 </main>
 
-
+{% if routes %}
+    <input type="hidden" id="routes-data" value="{{ routes|escapejs }}">
+{% endif %}
 
 {% endblock %}
 
+<!--for dropdown -->
 <script type="text/javascript">
   $(".chosen").chosen();
   </script>

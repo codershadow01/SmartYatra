@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
   
-    // Call the function to insert data when the page loads
     insertData();
   });
   

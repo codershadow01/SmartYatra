@@ -11,6 +11,9 @@ SmartPlanner
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<!-- leaftlet routing services css -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 <script src="{% static 'js/planner.js' %}"></script>
 <script src="{% static 'js/map.js' %}"></script>
 
@@ -24,18 +27,29 @@ SmartPlanner
     <div class="main-containers">
       <!-- this is route planner -->
       <div>
-        <h5 style="color: #025464">Route Planner</h5>
+        <h5 id="attractive-heading"></h5>
       </div>
       <div class="box1">
         <div class="container2">
-          <form class="form1" action="" method="POST">
+          <form class="form1" action="{% url "planner" %}" method="post">
+            {% csrf_token %}
             <div class="Col-1">
-              <input class="form-control" type="text" placeholder="Enter Your Location"
-                aria-label="default input example">
+              <input type="text" class="form-control" list="source_node" id="source" name="source"
+                placeholder="Enter your Location..." />
+              <datalist id="source_node">
+                {% for node in nodes %}
+                <option value="{{node.name}}">{{node.name}}</option>
+                {% endfor %}
+              </datalist>
             </div>
             <div class="Col-1">
-              <input class="form-control" type="text" placeholder="Enter Your Destination"
-                aria-label="default input example">
+              <input type="text" class="form-control" list="destination_node" id="destination" name="destination"
+                placeholder="Enter your destination..." />
+              <datalist id="destination_node">
+                {% for node in nodes %}
+                <option value="{{node.name}}">{{node.name}}</option>
+                {% endfor %}
+              </datalist>
             </div>
             <div class="Col-2">
               <div class="d-grid gap-2 col-3 mx-auto">
@@ -46,6 +60,7 @@ SmartPlanner
         </div>
       </div>
       <!-- this is time showing for cycle,walk,bike -->
+      {% if routes %}
       <div class="box1">
         <div class="container2">
           <div class="col1">
@@ -89,24 +104,29 @@ SmartPlanner
               </tr>
             </thead>
             <tbody id="data-body">
-
             </tbody>
           </table>
         </div>
       </div>
+      {% endif %}
     </div>
-   <!-- this container for showing the map -->
+    <!-- this container for showing the map -->
     <div class="map-container">
       <div class="map-column">
         <div id="map">
-        <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox=82.6007080078125%2C25.12601428552865%2C83.24340820312501%2C25.544919592476727&amp;layer=mapnik"
-          style="border: 1px solid black"></iframe>
-          </div>
-        <!-- <br /><small><a href="https://www.openstreetmap.org/#map=11/25.3356/82.9221">View Larger Map</a></small> --> -->
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=82.6007080078125%2C25.12601428552865%2C83.24340820312501%2C25.544919592476727&amp;layer=mapnik"
+            style="border: 1px solid black"></iframe>
+        </div>
+        <!-- <br /><small><a href="https://www.openstreetmap.org/#map=11/25.3356/82.9221">View Larger Map</a></small> -->
+        -->
       </div>
     </div>
   </div>
 </main>
 
 {% endblock %}
+
+<script type="text/javascript">
+  $(".chosen").chosen();
+</script>

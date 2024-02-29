@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from geopy.geocoders import Nominatim
-# from helper import find_nearest_points, search_algo
+import pandas as pd
+from .helper import find_nearest_points, search_algo
 from django import forms
 from .models import Nodes, Edges
 
@@ -19,10 +20,30 @@ class planner(View):
     def post(self,request):
         source = request.POST.get('source')
         destination = request.POST.get('destination')
-        print(request.POST)
-        print(source)
-        print(destination)
-        return render(request,'planner.html', {'routes': 1, 'source': source, 'destination': destination})
+        
+        def get_name(node):
+            return node.name
+
+        df = pd.DataFrame(Nodes.objects.all(),columns=["Nodes"])
+        df['Name'] = df['Nodes'].apply(get_name)
+        src = df[df['Name'] == (source)]
+        dest = df[df['Name'] == (destination)]
+        print(src.iloc[0]['Nodes'].lat)
+        lat1 = src.iloc[0]['Nodes'].lat
+        lon1 = src.iloc[0]['Nodes'].lon
+
+        lat2 = dest.iloc[0]['Nodes'].lat
+        lon2 = dest.iloc[0]['Nodes'].lon
+
+        arr1 = find_nearest_points(lat1, lon1, precision=7)
+        arr2 = find_nearest_points(lat2, lon2, precision=7)
+
+        print(src)
+        print(dest)
+        print(arr1)
+        print(arr2)
+        routes = search_algo(lat1, lon1, lat2, lon2, arr1, arr2)
+        return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination})
 
     
 

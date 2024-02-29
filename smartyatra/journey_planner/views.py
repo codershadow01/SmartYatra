@@ -16,7 +16,7 @@ class planner(View):
         nodes = Nodes.objects.all()
         return render(request,'planner.html',{'nodes':nodes, 'routes': 0})
     
-    def post(self,request):d
+    def post(self,request):
         source = request.POST.get('source')
         destination = request.POST.get('destination')
         print(request.POST)

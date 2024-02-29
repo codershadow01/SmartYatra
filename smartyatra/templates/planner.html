@@ -6,12 +6,14 @@ SmartPlanner
 
 {% block static_files %}
 <link rel="stylesheet" href="{% static 'css/mapstyle.css' %}">
-<!-- <link rel="stylesheetZ" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" /> -->
-<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="{% static 'js/planner.js' %}"></script>
-<!-- <script src="{% static 'js/map.js' %}"></script> -->
+<script src="{% static 'js/map.js' %}"></script>
+
 
 {% endblock %}
 
@@ -20,8 +22,7 @@ SmartPlanner
 <main id="main-feature">
   <div class="main-div">
     <div class="main-containers">
-      <!-- this is router planner -->
-       <!-- this is route planner -->
+      <!-- this is route planner -->
       <div>
         <h5 style="color: #025464">Route Planner</h5>
       </div>
@@ -75,33 +76,34 @@ SmartPlanner
           </div>
         </div>
       </div>
-      
+      <!-- this box for showing the bus schedule -->
       <div class="box1">
         <div class="container3">
-        <table class="table table-hover"  id="data-table">
-          <thead id="data-table">
-            <tr>
-              <th>Bus Plate No</th>
-              <th>Arriving Time</th>
-              <th>Cost</th>
-              <th>Time to Reach</th>
-            </tr>
-          </thead>
-          <tbody id="data-body">
-            
-          </tbody>
-        </table>
-      </div>
+          <table class="table table-hover" id="data-table">
+            <thead id="data-table">
+              <tr>
+                <th>Bus Plate No</th>
+                <th>Arriving Time</th>
+                <th>Cost</th>
+                <th>Time to Reach</th>
+              </tr>
+            </thead>
+            <tbody id="data-body">
+
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    
+   <!-- this container for showing the map -->
     <div class="map-container">
       <div class="map-column">
-        <iframe class="map"
+        <div id="map">
+        <iframe
           src="https://www.openstreetmap.org/export/embed.html?bbox=82.6007080078125%2C25.12601428552865%2C83.24340820312501%2C25.544919592476727&amp;layer=mapnik"
           style="border: 1px solid black"></iframe>
-          <br /><small><a
-            href="https://www.openstreetmap.org/#map=11/25.3356/82.9221">View Larger Map</a></small>
+          </div>
+        <!-- <br /><small><a href="https://www.openstreetmap.org/#map=11/25.3356/82.9221">View Larger Map</a></small> --> -->
       </div>
     </div>
   </div>

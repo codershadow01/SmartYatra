@@ -21,11 +21,6 @@ class planner(View):
         return render(request,'planner.html')
     
     def post(self,request):
-<<<<<<< HEAD
-        source = address_to_latlng(request.POST.get('source'))
-        destination = address_to_latlng(request.POST.get('destination'))
-
-=======
         source = request.POST.get('source')
         destination = request.POST.get('destination')
         arr1 = nearby_points(source)
@@ -34,7 +29,6 @@ class planner(View):
         res = search_algo(source,destination,arr1,arr2)
 
         return render(request,'planner.html',res)
->>>>>>> 6616d74310cbd649b1280add96f6e1959f938310
 
 
     def search_algo(source,destination,arr1,arr2):

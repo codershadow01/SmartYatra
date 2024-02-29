@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+
     // Dummy data
     const dummyData = [
       {"id": 1, "source": "Lanka", "distination": "Cantt", "mode": "AC123","ETA": 30, "at": 10, "cost": 10},

@@ -31,45 +31,26 @@ SmartPlanner
       </div>
       <div class="box1">
         <div class="container2">
-<<<<<<< Updated upstream
-          <form class="form1" action="{% url "planner" %}" method="post">
-            {% csrf_token %}
-            <div class="Col-1">
-              <input type="text" class="form-control" list="source_node" id="source" name="source"
-                placeholder="Enter your Location..." />
-              <datalist id="source_node">
-                {% for node in nodes %}
-                <option value="{{node.name}}">{{node.name}}</option>
-=======
 
 
 
           <form class="form1" action="{% url "planner" %}" method="post">
             {% csrf_token %} 
             <div class="Col-1">
-              <input type="text" class="form-control" list="source_node" id="source" name="source" placeholder="Enter your Location..."/>
+              <input type="text" class="form-control" list="source_node" id="source" name="source" value="{{source}}" placeholder="Enter your Location..."/>
               <datalist id="source_node">
                 {% for node in nodes %}
                 <option   value="{{node.name}}">{{node.name}}</option>
->>>>>>> Stashed changes
                 {% endfor %}
               </datalist>
             </div>
 
 
             <div class="Col-1">
-<<<<<<< Updated upstream
-              <input type="text" class="form-control" list="destination_node" id="destination" name="destination"
-                placeholder="Enter your destination..." />
-              <datalist id="destination_node">
-                {% for node in nodes %}
-                <option value="{{node.name}}">{{node.name}}</option>
-=======
-              <input type="text" class="form-control" list="destination_node" id="destination" name="destination" placeholder="Enter your destination..."/>
+              <input type="text" class="form-control" list="destination_node" id="destination" name="destination" value="{{destination}}" placeholder="Enter your destination..."/>
               <datalist id="destination_node">
                 {% for node in nodes %}
                 <option   value="{{node.name}}">{{node.name}}</option>
->>>>>>> Stashed changes
                 {% endfor %}
               </datalist>
             </div>
@@ -89,10 +70,7 @@ SmartPlanner
       </div>
       <!-- this is time showing for cycle,walk,bike -->
       {% if routes %}
-<<<<<<< Updated upstream
-=======
       
->>>>>>> Stashed changes
       <div class="box1">
         <div class="container2">
           <div class="col1">
@@ -142,12 +120,8 @@ SmartPlanner
       </div>
       {% endif %}
     </div>
-<<<<<<< Updated upstream
-    <!-- this container for showing the map -->
-=======
 
     
->>>>>>> Stashed changes
     <div class="map-container">
       <div class="map-column">
         <div id="map">
@@ -156,23 +130,15 @@ SmartPlanner
             style="border: 1px solid black"></iframe>
         </div>
         <!-- <br /><small><a href="https://www.openstreetmap.org/#map=11/25.3356/82.9221">View Larger Map</a></small> -->
-        -->
       </div>
     </div>
   </div>
 </main>
 
-<<<<<<< Updated upstream
-=======
 
 
->>>>>>> Stashed changes
 {% endblock %}
 
 <script type="text/javascript">
   $(".chosen").chosen();
-<<<<<<< Updated upstream
-</script>
-=======
   </script>
->>>>>>> Stashed changes

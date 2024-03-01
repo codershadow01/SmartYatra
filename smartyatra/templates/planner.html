@@ -61,7 +61,6 @@ SmartPlanner
       </div>
       <!-- this is time showing for cycle,walk,bike -->
       {% if routes %}
-
       <div class="box1">
         <div class="container2">
           <div class="col1">
@@ -96,31 +95,21 @@ SmartPlanner
       <div class="box1">
         <div class="container3">
           <table class="table table-hover" id="data-table">
-            <thead id="data-table">
-              <tr>
-                <th>Bus Plate No</th>
-                <th>Arriving Time</th>
-                <th>Cost</th>
-                <th>Time to Reach</th>
-              </tr>
-            </thead>
             <tbody id="data-body">
               {% for r in routes %}
                 <tr>
                 {% for i in r %}
-                  <td>{{i.1}}</td>
+                  <td>{{i.2}}</td>
                 {% endfor %}
               </tr>
               {% endfor %}
-
             </tbody>
           </table>
         </div>
       </div>
       {% endif %}
     </div>
-
-
+    <!-- this is map container -->
     <div class="map-container">
       <div class="map-column">
         <div id="map">
@@ -134,10 +123,6 @@ SmartPlanner
 </main>
 
 {% if routes %}
-<script>
-  console.log("i got the routes");
-</script>
-
 <input type="hidden" id="routes-data" value="{{ routes|escapejs }}">
 {% endif %}
 

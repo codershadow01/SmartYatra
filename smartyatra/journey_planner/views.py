@@ -28,7 +28,6 @@ class planner(View):
         df['Name'] = df['Nodes'].apply(get_name)
         src = df[df['Name'] == (source)]
         dest = df[df['Name'] == (destination)]
-        print(src.iloc[0]['Nodes'].lat)
         lat1 = src.iloc[0]['Nodes'].lat
         lon1 = src.iloc[0]['Nodes'].lon
 
@@ -38,11 +37,8 @@ class planner(View):
         arr1 = find_nearest_points(lat1, lon1, precision=7)
         arr2 = find_nearest_points(lat2, lon2, precision=7)
 
-        print(src)
-        print(dest)
-        print(arr1)
-        print(arr2)
         routes = search_algo(lat1, lon1, lat2, lon2, arr1, arr2)
+        print(routes)
         return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination})
 
     
@@ -50,3 +46,6 @@ class planner(View):
 
 def about(request):
     return render(request,"about.html")
+
+def nearby(request):
+    return render(request,'nearby.html')

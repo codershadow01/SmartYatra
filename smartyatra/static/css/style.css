@@ -11,7 +11,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #052d42;
+  color: #025464;
   background-color: white;
 }
 
@@ -76,7 +76,7 @@ h6,
   /* transition: all 0.5s; */
   z-index: 997;
   transition: all 0.5s;
-  background: #052d42;
+  background: #025464;
 }
 
 #header.header-transparent {
@@ -84,7 +84,7 @@ h6,
 }
 
 #header.header-scrolled {
-  background: #052d42;
+  background: #025464;
   height: 60px;
 }
 
@@ -1775,7 +1775,7 @@ section {
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: #1e4356;
+  background-color: #025464;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -2167,7 +2167,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #052d42;
+  background: #025464;
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;

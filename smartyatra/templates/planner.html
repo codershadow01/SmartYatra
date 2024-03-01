@@ -93,15 +93,34 @@ SmartPlanner
       </div>
       <!-- this box for showing the bus schedule -->
       <div class="box1">
-        <div class="container3">
-          <table class="table table-hover" id="data-table">
+        <div class="container2">
+          <table class="table table-borderless" id="data-table">
             <tbody id="data-body">
               {% for r in routes %}
-                <tr>
                 {% for i in r %}
-                  <td>{{i.2}}</td>
-                {% endfor %}
+                <tr>
+                  <td>
+                    <div class="tableBusImage">
+                      <img class="tableBusImg1" src="\static\img\newbus.png" alt="">
+                    </div>
+                  </td>
+                  <td>
+                    <h5 class="locationName" style="color: green;">{{i.4}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="locationName" style="color: green;">30 min</h5>
+                  </td>
+                </tr>  
+                <tr>
+                  <td>
+                    <div class="tableArrowImage">
+                      <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
+                    </div>
+                  </td>
+                  <td></td>
+                  <td></td>
               </tr>
+                {% endfor %}
               {% endfor %}
             </tbody>
           </table>

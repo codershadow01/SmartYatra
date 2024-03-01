@@ -103,9 +103,9 @@ button:hover {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    margin: 5%;
+    margin-top: 3%;
     align-items: center;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
 }
 
 .heading {
@@ -211,11 +211,7 @@ button:hover {
     width: 100%;
     height: 100%;
 }
-#data-table {
-    background-color: white;
-    margin: 2%;
-    border-radius: 10px;
-}
+
 .container3 {
     display: flex !important;
     align-items: center;
@@ -224,9 +220,34 @@ button:hover {
     align-items: center;
     background-color: #025464;
 }
+
+.col{
+   background-color: #025464;
+   justify-self: center;
+   border-width: 20%;   
+}
+
+/* from here table css start */
+
+#data-table {
+    background-color: white;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+.table-borderless{
+   margin-right: 0%;
+   margin-left: 0%;
+}
+
+#data-body{
+    border-radius: 10px;
+}
+
 .row {
     background-color: #025464;
 }
+
 #data-body td {
     border-radius: 10px;
     font-size: 18px;
@@ -234,11 +255,47 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
-.col{
-   background-color: #025464;
-   justify-self: center;
-   border-width: 20%;   
+
+.locationName{
+    margin-top:15px;
+    font-weight: 700;
+    font-variant-caps: all-small-caps;
+    font-stretch: expanded;
 }
+
+.arrowRow{
+    height: 10%;
+}
+
+.tableBusImg1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.tableBusImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.tableArrowImg1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.tableArrowImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+/* here nearby-services css start */
+
 .image00{
     display: block;
     margin-left: auto;

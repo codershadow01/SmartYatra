@@ -75,7 +75,6 @@ button:hover {
 }
 
 */ #main-feature {
-    /* display: flex !important; */
     width: 100%;
     margin-top: 5%;
     /* when you fix the header hen remove this  */
@@ -192,41 +191,40 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
-
 .img11 {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-
 }
-
+.img12 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
 .imagewa {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
 }
-
 .timewa {
     display: flex !important;
     width: 100%;
     justify-content: center;
     align-items: center;
 }
-
 .small-col {
     display: grid;
     width: 100%;
     height: 100%;
 }
-
 #data-table {
     background-color: white;
     margin: 2%;
     border-radius: 10px;
 }
-
 .container3 {
     display: flex !important;
     align-items: center;
@@ -235,11 +233,9 @@ button:hover {
     align-items: center;
     /* margin-bottom: 5%; */
 }
-
 .row {
     background-color: #025464;
 }
-
 #data-body td {
     border-radius: 10px;
     font-size: 18px;

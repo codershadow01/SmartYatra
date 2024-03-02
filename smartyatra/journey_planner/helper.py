@@ -133,9 +133,5 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         
         for i in neighbors:
             q.append((cur[1],i.node2,cur[2]))
-
-        print(res)
-
-
-    # print()
+            
     return res

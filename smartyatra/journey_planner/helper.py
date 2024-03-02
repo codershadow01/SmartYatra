@@ -11,11 +11,13 @@ import requests
 def get_geohash(node):
     return node.geohash
 
+
 df = pd.DataFrame(Nodes.objects.all(),columns=["Nodes"])
 df['geohash'] = df['Nodes'].apply(get_geohash)
 
 # //to find nearby public transport services within 2 km radius
 def find_nearest_points(latitude, longitude, precision=7, max_distance=None):
+    
     center_geohash = geohash.encode(latitude, longitude, precision=precision)
     neighbor_geohashes = neighbors(center_geohash) + [center_geohash]
 
@@ -94,6 +96,9 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     q = []
     res = []
 
+    total_time = 0
+
+
     center_geohash = geohash.encode(src1, src2, precision=7)
     center_geohash1 = geohash.encode(dest1,dest2,precision=7)
     source = Nodes.objects.create(name='source', lat=src1, lon=src2, geohash=center_geohash)
@@ -103,15 +108,15 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         temp = []
         if(source.lat == arr1.iloc[i]['Nodes'].lat and source.lon == arr1.iloc[i]['Nodes'].lon):
             continue
-        temp.append((0, source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon))
-        q.append((source,arr1.iloc[i]['Nodes'],temp)) 
+        temp.append(('walk', source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon))
+        q.append((source,arr1.iloc[i]['Nodes'],temp,10)) 
 
     if(not q):
         neighbors = arr1.iloc[0]['Nodes'].outgoing_edges.all() 
         for i in neighbors:
             temp = []
-            temp.append((1, arr1.iloc[0]['Nodes'].name, arr1.iloc[0]['Nodes'].lat, arr1.iloc[0]['Nodes'].lon, i.node2.name, i.node2.lat, i.node2.lon))
-            q.append((arr1.iloc[0]['Nodes'].name,i.node2,temp))
+            temp.append((i.vehicle_name, arr1.iloc[0]['Nodes'].name, arr1.iloc[0]['Nodes'].lat, arr1.iloc[0]['Nodes'].lon, i.node2.name, i.node2.lat, i.node2.lon))
+            q.append((arr1.iloc[0]['Nodes'].name,i.node2,temp,i.weight))
         
 
     while q:
@@ -119,15 +124,15 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         q.pop(0)
 
         if cur[1].lat==dest1 and cur[1].lon==dest2: 
-            res.append(cur[2])
+            res.append((cur[2],cur[3]))
             continue
             
         flag = 0
         for i in range(len(arr2)):
             obj = arr2.iloc[i]['Nodes']
             if(obj.lat == cur[1].lat and obj.lon == cur[1].lon):
-                cur[2].append((0,cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon))
-                res.append(cur[2])
+                cur[2].append(('walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon))
+                res.append((cur[2], cur[3]))
                 flag = 1
                 break
 
@@ -139,8 +144,8 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         
         for i in neighbors:
             temp = list(cur[2])
-            temp.append((1, cur[1].name, cur[1].lat, cur[1].lon, i.node2.name, i.node2.lat, i.node2.lon))
-            q.append((cur[1],i.node2,temp))
+            temp.append((i.vehicle_name, cur[1].name, cur[1].lat, cur[1].lon, i.node2.name, i.node2.lat, i.node2.lon))
+            q.append((cur[1],i.node2,temp,i.weight+cur[3]))
 
     return res
     

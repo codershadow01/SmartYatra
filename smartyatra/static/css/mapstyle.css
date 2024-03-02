@@ -293,26 +293,3 @@ button:hover {
     margin-right: auto;
     width: 30%;
 }
-
-/* here nearby-services css start */
-
-.image00{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    border-radius: 10px;
-}
-.text-center{
-    margin: 5%;
-    
-}
-.row-cols-3{
-    border-radius: 20px;
-}
-.box1 .col {
-    transition: transform 0.3s ease-in-out;
-}
-.box1 .col:hover {
-    transform: translateY(-10px);
-}

@@ -96,19 +96,29 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
 
     center_geohash = geohash.encode(src1, src2, precision=7)
     center_geohash1 = geohash.encode(dest1,dest2,precision=7)
-    src = Nodes.objects.create(name='source', lat=src1, lon=src2, geohash=center_geohash)
-    dest = Nodes.objects.create(name='destination', lat=dest1, lon=dest2, geohash=center_geohash1)
+    source = Nodes.objects.create(name='source', lat=src1, lon=src2, geohash=center_geohash)
+    destination = Nodes.objects.create(name='destination', lat=dest1, lon=dest2, geohash=center_geohash1)
     
     for i in range(len(arr1)):
         temp = []
-        q.append((src,arr1.iloc[i]['Nodes'],temp))  #src, rto
+        if(source.lat == arr1.iloc[i]['Nodes'].lat and source.lon == arr1.iloc[i]['Nodes'].lon):
+            continue
+        temp.append((0, source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon))
+        q.append((source,arr1.iloc[i]['Nodes'],temp)) 
+
+    if(not q):
+        neighbors = arr1.iloc[0]['Nodes'].outgoing_edges.all() 
+        for i in neighbors:
+            temp = []
+            temp.append((1, arr1.iloc[0]['Nodes'].name, arr1.iloc[0]['Nodes'].lat, arr1.iloc[0]['Nodes'].lon, i.node2.name, i.node2.lat, i.node2.lon))
+            q.append((arr1.iloc[0]['Nodes'].name,i.node2,temp))
+        
 
     while q:
         cur = q[0]
         q.pop(0)
 
         if cur[1].lat==dest1 and cur[1].lon==dest2: 
-            cur[2].append((1,cur[0].name, cur[0].lat, cur[0].lon, cur[1].name, cur[1].lat, cur[1].lon))
             res.append(cur[2])
             continue
             
@@ -116,8 +126,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         for i in range(len(arr2)):
             obj = arr2.iloc[i]['Nodes']
             if(obj.lat == cur[1].lat and obj.lon == cur[1].lon):
-                cur[2].append((1,cur[0].name, cur[0].lat, cur[0].lon, cur[1].name, cur[1].lat, cur[1].lon))
-                cur[2].append((0,cur[1].name,cur[1].lat, cur[1].lon, dest.name, dest.lat, dest.lon))
+                cur[2].append((0,cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon))
                 res.append(cur[2])
                 flag = 1
                 break
@@ -125,13 +134,13 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         if(flag == 1):
             continue  
         
-        cur[2].append((1, cur[0].name, cur[0].lat, cur[0].lon, cur[1].name, cur[1].lat, cur[1].lon))
+        
         neighbors = cur[1].outgoing_edges.all() 
-
-        # print("neighbours")
-        # print(neighbors)
         
         for i in neighbors:
-            q.append((cur[1],i.node2,cur[2]))
-            
+            temp = list(cur[2])
+            temp.append((1, cur[1].name, cur[1].lat, cur[1].lon, i.node2.name, i.node2.lat, i.node2.lon))
+            q.append((cur[1],i.node2,temp))
+
     return res
+    

@@ -99,21 +99,13 @@ button:hover {
     height: 100%;
 }
 
-.container1 {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    margin: 5%;
-
-}
-
 .container2 {
     display: flex !important;
     align-items: center;
     justify-content: center;
-    margin: 5%;
+    margin-top: 3%;
     align-items: center;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
 }
 
 .heading {
@@ -141,7 +133,6 @@ button:hover {
     width: 100%;
 }
 
-/* #map { height: 180px; } */
 .submit-your-path {
     align-items: center;
     justify-content: center;
@@ -220,28 +211,108 @@ button:hover {
     width: 100%;
     height: 100%;
 }
+
+.container3 {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 5%;
+    align-items: center;
+    background-color: #025464;
+}
+
+.col{
+   background-color: #025464;
+   justify-self: center;
+   border-width: 20%;   
+}
+
+/* from here table css start */
+
 #data-table {
     background-color: white;
     margin: 2%;
     border-radius: 10px;
 }
-.container3 {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    /* margin: 5%; */
-    align-items: center;
-    /* margin-bottom: 5%; */
+
+.table-borderless{
+   margin-right: 0%;
+   margin-left: 0%;
 }
+
+#data-body{
+    border-radius: 10px;
+}
+
 .row {
     background-color: #025464;
 }
+
 #data-body td {
     border-radius: 10px;
     font-size: 18px;
     width: 25%;
-    border-color: rgb(225, 222, 222);
-    border-left-width: 1px;
     justify-content: center;
     align-items: center;
+}
+
+.locationName{
+    margin-top:15px;
+    font-weight: 700;
+    font-variant-caps: all-small-caps;
+    font-stretch: expanded;
+}
+
+.arrowRow{
+    height: 10%;
+}
+
+.tableBusImg1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.tableBusImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.tableArrowImg1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.tableArrowImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+/* here nearby-services css start */
+
+.image00{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 10px;
+}
+.text-center{
+    margin: 5%;
+    
+}
+.row-cols-3{
+    border-radius: 20px;
+}
+.box1 .col {
+    transition: transform 0.3s ease-in-out;
+}
+.box1 .col:hover {
+    transform: translateY(-10px);
 }

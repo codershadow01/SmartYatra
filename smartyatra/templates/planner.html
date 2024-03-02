@@ -15,6 +15,7 @@ SmartPlanner
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 <script src="{% static 'js/map.js' %}"></script>
+<script src="{% static 'js/planner.js' %}"></script>
 
 
 {% endblock %}
@@ -60,7 +61,6 @@ SmartPlanner
       </div>
       <!-- this is time showing for cycle,walk,bike -->
       {% if routes %}
-
       <div class="box1">
         <div class="container2">
           <div class="col1">
@@ -93,25 +93,42 @@ SmartPlanner
       </div>
       <!-- this box for showing the bus schedule -->
       <div class="box1">
-        <div class="container3">
-          <table class="table table-hover" id="data-table">
-            <thead id="data-table">
-              <tr>
-                <th>Bus Plate No</th>
-                <th>Arriving Time</th>
-                <th>Cost</th>
-                <th>Time to Reach</th>
-              </tr>
-            </thead>
+        <div class="container2">
+          <table class="table table-borderless" id="data-table">
             <tbody id="data-body">
+              {% for r in routes %}
+                {% for i in r %}
+                <tr>
+                  <td>
+                    <div class="tableBusImage">
+                      <img class="tableBusImg1" src="\static\img\newbus.png" alt="">
+                    </div>
+                  </td>
+                  <td>
+                    <h5 class="locationName" style="color: green;">{{i.4}}</h5>
+                  </td>
+                  <td>
+                    <h5 class="locationName" style="color: green;">30 min</h5>
+                  </td>
+                </tr>  
+                <tr>
+                  <td>
+                    <div class="tableArrowImage">
+                      <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
+                    </div>
+                  </td>
+                  <td></td>
+                  <td></td>
+              </tr>
+                {% endfor %}
+              {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
       {% endif %}
     </div>
-
-
+    <!-- this is map container -->
     <div class="map-container">
       <div class="map-column">
         <div id="map">
@@ -125,10 +142,6 @@ SmartPlanner
 </main>
 
 {% if routes %}
-<script>
-  console.log("i got the routes");
-</script>
-<script src="{% static 'js/planner.js' %}"></script>
 <input type="hidden" id="routes-data" value="{{ routes|escapejs }}">
 {% endif %}
 

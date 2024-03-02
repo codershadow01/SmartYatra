@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     return routesDataValues;
   }
-
+  
+ 
   var routesDataValues = extractData(routesDataElements.value);
   var waynames=[];
 
   if (routesDataValues.length > 0) {
+    console.log(routesDataValues);
     var waypoints = [];
     routesDataValues.forEach(function (route) {
           waypoints.push(L.latLng(route[5], route[6]));

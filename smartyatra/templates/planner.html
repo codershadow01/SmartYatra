@@ -96,8 +96,8 @@ SmartPlanner
         <div class="container2">
           <table class="table table-borderless" id="data-table">
             <tbody id="data-body">
-              {% for r in routes %}
-                {% for i in r.0 %}
+              {% for r in routes.0 %}
+                {% for i in r %}
                   <tr>
                       <td>
                         <div class="tableBusImage">
@@ -107,11 +107,11 @@ SmartPlanner
                       <td>
                         <h5 class="locationName" style="color: green;">{{i.1}}</h5>
                       </td>
-                      {% if forloop.first %}
+                      <!-- {% if forloop.first %} -->
                         <td>
-                          <h5 class="locationName" style="color: green;">{{r.1}} mins</h5>
+                          <h5 class="locationName" style="color: green;">{{routes.1}} mins</h5>
                         </td>
-                      {% endif %}
+                      <!-- {% endif %} -->
                     </tr>  
                     <tr>
                       <td>
@@ -157,7 +157,7 @@ SmartPlanner
 </main>
 
 {% if routes %}
-<input type="hidden" id="routes-data" value="{{ routes|escapejs }}">
+<input type="hidden" id="routes-data" value="{{ routes.0|escapejs }}">
 {% endif %}
 
 {% endblock %}

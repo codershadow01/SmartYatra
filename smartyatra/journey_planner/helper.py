@@ -95,8 +95,8 @@ def duration(lat1, lon1, lat2, lon2):
 def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     q = []
     res = []
-
-    total_time = 0
+    path = []
+    total_time = []
 
 
     center_geohash = geohash.encode(src1, src2, precision=7)
@@ -124,7 +124,8 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         q.pop(0)
 
         if cur[1].lat==dest1 and cur[1].lon==dest2: 
-            res.append((cur[2],cur[3]))
+            res.append(cur[2])
+            total_time.append(cur[3])
             continue
             
         flag = 0
@@ -132,7 +133,8 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
             obj = arr2.iloc[i]['Nodes']
             if(obj.lat == cur[1].lat and obj.lon == cur[1].lon):
                 cur[2].append(('walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon))
-                res.append((cur[2], cur[3]))
+                res.append(cur[2])
+                total_time.append(cur[3])
                 flag = 1
                 break
 
@@ -147,5 +149,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
             temp.append((i.vehicle_name, cur[1].name, cur[1].lat, cur[1].lon, i.node2.name, i.node2.lat, i.node2.lon))
             q.append((cur[1],i.node2,temp,i.weight+cur[3]))
 
-    return res
+    path.append(res)
+    path.append(total_time)
+    return path
     

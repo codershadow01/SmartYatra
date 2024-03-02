@@ -120,3 +120,43 @@
 .box1 .col:hover {
     transform: translateY(-10px);
 }
+
+.form1 {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 5%;
+}
+
+.Col-1 {
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 2%;
+    margin-left: 10%;
+}
+
+.Col-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container2 {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    align-items: center;
+    /* margin-bottom: 5%; */
+}
+
+.stops{
+    margin-top: 3%;
+    align-items: center;
+}
+
+.stopHeading{
+    color: grey;
+}
+

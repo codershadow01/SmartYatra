@@ -21,19 +21,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var routesDataValues = extractData(routesDataElements.value);
-  console.log(routesDataValues)
+  var waynames=[];
 
   if (routesDataValues.length > 0) {
     var waypoints = [];
     routesDataValues.forEach(function (route) {
           waypoints.push(L.latLng(route[5], route[6]));
+          var cleanedRouteName = route[1].replace(/^\\u0027|\\u0027$/g, '');
+          waynames.push(cleanedRouteName);
     });
+
     L.Routing.control({
-      waypoints: waypoints
+      waypoints: waypoints,
   }).addTo(map);
-  waypoints.forEach(function (waypoint) {
-      L.marker(waypoint).addTo(map);
+
+  waypoints.forEach(function (waypoint,index) {
+     var marker=L.marker(waypoint).addTo(map);
+      marker.bindPopup(waynames[index]).openPopup();
   });
 }
-
 });

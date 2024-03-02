@@ -97,29 +97,44 @@ SmartPlanner
           <table class="table table-borderless" id="data-table">
             <tbody id="data-body">
               {% for r in routes %}
-                {% for i in r %}
-                <tr>
-                  <td>
-                    <div class="tableBusImage">
-                      <img class="tableBusImg1" src="\static\img\newbus.png" alt="">
-                    </div>
-                  </td>
-                  <td>
-                    <h5 class="locationName" style="color: green;">{{i.4}}</h5>
-                  </td>
-                  <td>
-                    <h5 class="locationName" style="color: green;">30 min</h5>
-                  </td>
-                </tr>  
-                <tr>
-                  <td>
-                    <div class="tableArrowImage">
-                      <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
-                    </div>
-                  </td>
-                  <td></td>
-                  <td></td>
-              </tr>
+                {% for i in r.0 %}
+                  <tr>
+                      <td>
+                        <div class="tableBusImage">
+                          <img class="tableBusImg1" src="\static\img\newbus.png" alt="">
+                        </div>
+                      </td>
+                      <td>
+                        <h5 class="locationName" style="color: green;">{{i.1}}</h5>
+                      </td>
+                      {% if forloop.first %}
+                        <td>
+                          <h5 class="locationName" style="color: green;">{{r.1}} mins</h5>
+                        </td>
+                      {% endif %}
+                    </tr>  
+                    <tr>
+                      <td>
+                        <div class="tableArrowImage">
+                          <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
+                        </div>
+                      </td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  {% if forloop.last %}
+                  <tr>
+                    <td>
+                      <div class="tableBusImage">
+                        <img class="tableBusImg1" src="\static\img\newbus.png" alt="">
+                      </div>
+                    </td>
+                    <td>
+                      <h5 class="locationName" style="color: green;">{{i.4}}</h5>
+                    </td>
+                    <td> </td>
+                  </tr>
+                  {% endif %}
                 {% endfor %}
               {% endfor %}
             </tbody>

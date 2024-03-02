@@ -41,8 +41,6 @@ class planner(View):
         print(routes)
         return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination})
 
-    
-
 
 def about(request):
     return render(request,"about.html")

@@ -109,12 +109,12 @@ SmartPlanner
                       </td>
                       <!-- {% if forloop.first %} -->
                         <td>
-                          <h5 class="locationName" style="color: green;">{{routes.1}} mins</h5>
+                          <!-- <h5 class="locationName" style="color: black;">{{routes.1}} mins</h5> -->
                         </td>
                       <!-- {% endif %} -->
                     </tr>  
                     <tr>
-                      <td>
+                      <td class="tableArrow">
                         <div class="tableArrowImage">
                           <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
                         </div>
@@ -126,7 +126,7 @@ SmartPlanner
                   <tr>
                     <td>
                       <div class="tableBusImage">
-                        <img class="tableBusImg1" src="\static\img\newbus.png" alt="">
+                        <img class="tableBusImg1" src="\static\img\buss.png" alt="">
                       </div>
                     </td>
                     <td>
@@ -140,6 +140,17 @@ SmartPlanner
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="box1">
+           <div class = "container2">
+              <div class="total-time">
+                {% for r in routes.1 %}
+                <h5 class="total-travelling-time">
+                  Total travelling time : {{r}} minutes
+                </h5>
+                {% endfor %}
+              </div>
+           </div>
       </div>
       {% endif %}
     </div>

@@ -264,7 +264,7 @@ button:hover {
 }
 
 .locationName{
-    margin-top:15px;
+    margin-top: 5%;
     font-weight: 700;
     font-variant-caps: all-small-caps;
     font-stretch: expanded;
@@ -299,9 +299,21 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
     width: 30%;
+    margin-top: -10%;
+    margin-bottom: -20%;
 }
 
 .t1{
     font-weight: bold;
     color: black;
 }
+
+.total-time{
+    background-color: beige;
+    margin: 2%;
+}
+
+.total-travelling-time{
+    margin-top:2%;
+}
+

@@ -665,6 +665,7 @@ section {
   padding-bottom: 20px;
   margin-top: 20px;
   margin-bottom: 40px;
+  background-color: white;
 }
 
 .services .icon-box {
@@ -677,6 +678,7 @@ section {
   transition: all 0.3s ease-in-out;
   text-align: center;
   border: 1px solid #fff;
+  border-radius: 10px;
 }
 
 .services .icon {

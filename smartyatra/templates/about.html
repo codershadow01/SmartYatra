@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  About
+About
 {% endblock %}
 
 {% block static_files %}
@@ -11,57 +11,138 @@
 
 {% block body %}
 
-  <main id="main">
-    <section class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>SmartYatra: The Future of Public Transportation</h2>
+<main id="main">
+  <section class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>SmartYatra: The Future of Public Transportation</h2>
+      </div>
+      <div class="container-fluid p-0 mb-4">
+        <div class="row m-0">
+          <div class="col-md-6 p-0 mb-4">
+            <img src="\static\img\aboutImage.jpg" class="img-fluid" alt="Map Image">
+          </div>
+          <div class="col-md-6 d-flex align-items-center justify-content-center p-5 mb-4">
+            <div>
+              <h1>About Us</h1>
+              <p class="description">
+                The SmartYatra not only facilitates cost-effective travel but also integrates additional features like
+                locating nearby bus stops, further enhancing convenience and efficiency.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="icon-box icon-box-pink">
-                <img class="img11" src="\static\img\accessible.png" alt="">
-              <h4 class="title"><a href="">Accessible</a></h4>
-              <p class="description">
-                SmartYatra ensures that public transportation becomes accessible to all individuals. By providing real-time information, accessible routes, and inclusive features, our app empowers everyone to conveniently navigate and utilize public transportation systems.
-              </p>
-            </div>
+      </div>
+      <div class="section-title">
+        <h2>Benefits</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+          <div class="icon-box icon-box-pink">
+            <img class="img11" src="\static\img\accessible.png" alt="">
+            <h4 class="title"><a href="">Accessible</a></h4>
+            <p class="description">
+              SmartYatra ensures that public transportation becomes accessible to all individuals. By providing
+              real-time information, accessible routes, and inclusive features, our app empowers everyone to
+              conveniently navigate and utilize public transportation systems.
+            </p>
           </div>
+        </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon-box icon-box-green">
-              <img class="img11" src="\static\img\Sustainability.png" alt="">
-              <h4 class="title"><a href="">Sustainable</a></h4>
-              <p class="description">
-                Embracing sustainability is at the core of SmartYatra's mission. By promoting the use of public transportation over private vehicles, we contribute to reducing carbon emissions and minimizing our ecological footprint.
-              </p>
-            </div>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon-box icon-box-green">
+            <img class="img11" src="\static\img\Sustainability.png" alt="">
+            <h4 class="title"><a href="">Sustainable</a></h4>
+            <p class="description">
+              Embracing sustainability is at the core of SmartYatra's mission. By promoting the use of public
+              transportation over private vehicles, we contribute to reducing carbon emissions and minimizing our
+              ecological footprint.
+            </p>
           </div>
+        </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-cyan">
-              <img class="img11" src="\static\img\traffic.png" alt="">
-              <h4 class="title"><a href="">Reduce Traffic</a></h4>
-              <p class="description">
-                SmartYatra plays a crucial role in alleviating urban congestion by prioritizing public transportation options. By offering comprehensive route planning and encouraging shared mobility solutions, our app helps decongest roads and reduce traffic jams.
-              </p>
-            </div>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-box icon-box-cyan">
+            <img class="img11" src="\static\img\traffic.png" alt="">
+            <h4 class="title"><a href="">Reduce Traffic</a></h4>
+            <p class="description">
+              SmartYatra plays a crucial role in alleviating urban congestion by prioritizing public transportation
+              options. By offering comprehensive route planning and encouraging shared mobility solutions, our app helps
+              decongest roads and reduce traffic jams.
+            </p>
           </div>
+        </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-yellow">
-              <img class="img11" src="\static\img\costSaving.png" alt="">
-              <h4 class="title"><a href="">Cost Saving</a></h4>
-              <p class="description">
-                Choosing public transportation through SmartYatra translates into significant cost savings for commuters. By opting for buses, trains, or rideshares instead of driving personal vehicles, users can save on fuel expenses, parking fees, and maintenance costs.
-              </p>
-            </div>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-box icon-box-yellow">
+            <img class="img11" src="\static\img\costSaving.png" alt="">
+            <h4 class="title"><a href="">Cost Saving</a></h4>
+            <p class="description">
+              Choosing public transportation through SmartYatra translates into significant cost savings for commuters.
+              By opting for buses, trains, or rideshares instead of driving personal vehicles, users can save on fuel
+              expenses, parking fees, and maintenance costs.
+            </p>
           </div>
-
         </div>
 
       </div>
-    </section>
-  </main>
+
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Team: O-Tree Kal Aana</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a>Pratiksha Vikharankar</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a>Yashita Bansal</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a>Jyoti Kumari</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">SmartPlanner</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Profile</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Always know where to go</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Effortless Route Planning</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Personalized Travel Companion</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>About SmartYatra</h3>
+            <p>The SmartYatra not only facilitates cost-effective travel but also integrates additional features like
+              locating nearby bus stops, further enhancing convenience and efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>SmartYatra</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+</main>
 
 {% endblock %}

@@ -66,6 +66,7 @@ class nearby(View):
         lon = location.iloc[0]['Nodes'].lon
 
         arr1 = find_nearby_services(lat, lon, precision=5)
-        json_arr1 = json.dumps(arr1)
+        services = [{'bus':arr1[0]}, {'auto':arr1[1]}]
+        json_arr1 = json.dumps(services)
         print(json_arr1)
-        return render(request,'nearby.html', {'services': json_arr1, 'location': location.iloc[0]['Nodes'].name})
+        return render(request,'nearby.html', {'services':json_arr1, 'location': location.iloc[0]['Nodes'].name})

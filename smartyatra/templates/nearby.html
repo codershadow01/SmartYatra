@@ -28,10 +28,16 @@ SmartPlanner
             </div>
             <div class="box1">
               <div class="container2">
-                <form class="form1" method="post">
+                <form class="form1" action="{% url "nearby-services" %}"" method="post">
+                  {% csrf_token %}
                   <div class="Col-1">
-                    <input type="text" class="form-control" list="source_node" id="source" name="source" value="{{source}}"
+                    <input type="text" class="form-control" list="location_node" id="location" name="location" value="{{location}}"
                       placeholder="Enter your Location..." />
+                      <datalist id="location_node">
+                        {% for node in nodes %}
+                        <option value="{{node.name}}">{{node.name}}</option>
+                        {% endfor %}
+                      </datalist>
                   </div>
                   <div class="Col-2">
                     <div class="d-grid gap-2 col-3 mx-auto">
@@ -41,6 +47,13 @@ SmartPlanner
                 </form>
               </div>
             </div>
+            {% if services %}
+              <script>
+                console.log("hii");
+                var jsonData = {{ services|safe }};
+                console.log(jsonData);
+              </script>
+            {% endif %}
             <div class="stops">
               <h5 class="stopHeading">
                 Services
@@ -90,3 +103,8 @@ SmartPlanner
 </main>
 
 {% endblock %}
+
+<!--for dropdown -->
+<script type="text/javascript">
+  $(".chosen").chosen();
+</script>

@@ -45,7 +45,7 @@ h6,
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: #62d450;
+  background: beige;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -54,12 +54,12 @@ h6,
 
 .back-to-top i {
   font-size: 24px;
-  color: #fff;
+  color: black;
   line-height: 0;
 }
 
 .back-to-top:hover {
-  background: #85b6cf;
+  background: rgb(145, 140, 140);
   color: #fff;
 }
 
@@ -433,11 +433,11 @@ h6,
   margin: 10px;
   color: #fff;
   animation-delay: 0.8s;
-  border: 2px solid black;
+  background: black;
 }
 
 #hero .btn-get-started:hover {
-  background: black;
+  border: 2px solid white;
   color: #fff;
   text-decoration: none;
 }

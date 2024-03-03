@@ -754,8 +754,8 @@ section {
   color: #2282ff;
 }
 
-.services .icon-box-blue:hover {
-  border-color: #2282ff;
+.services .icon-box-yellow:hover {
+  border-color: rgb(216, 245, 33);
 }
 
 /*--------------------------------------------------------------

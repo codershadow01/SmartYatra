@@ -1,8 +1,6 @@
-.description{
-   font-size: 10px;
-}
-.services .title a
-{
-  /* color: #025464; */
-   color:brown
+.img11 {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 40%;
 }

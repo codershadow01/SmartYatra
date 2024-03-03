@@ -2070,7 +2070,7 @@ section {
 }
 
 .blog .sidebar .categories ul a:hover {
-  color: #68A4C4;
+  color: #3bd30d;;
 }
 
 .blog .sidebar .categories ul a span {
@@ -2100,7 +2100,7 @@ section {
 }
 
 .blog .sidebar .recent-posts h4 a:hover {
-  color: #68A4C4;
+  color: #3bd30d; ;
 }
 
 .blog .sidebar .recent-posts time {
@@ -2125,7 +2125,7 @@ section {
 }
 
 .blog .sidebar .tags ul a {
-  color: #3f8db5;
+  color: #3bd30d;;
   font-size: 14px;
   padding: 6px 14px;
   margin: 0 6px 8px 0;
@@ -2194,20 +2194,20 @@ section {
   font-size: 16px;
   padding: 0 20px;
   margin: 3px;
-  background: #68A4C4;
+  background: black;
   color: #fff;
   transition: 0.3s;
   border-radius: 50px;
 }
 
 #footer .footer-newsletter form input[type=submit]:hover {
-  background: #468db3;
+  background: #3bd30d;
 }
 
 #footer .footer-top {
-  background: #0d2735;
-  border-top: 1px solid #17455e;
-  border-bottom: 1px solid #123649;
+  background: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   padding: 60px 0 30px 0;
 }
 
@@ -2220,7 +2220,7 @@ section {
   margin: 0 0 20px 0;
   padding: 2px 0 2px 0;
   line-height: 1;
-  color: #a2cce3;
+  color: beige;
   font-weight: 600;
 }
 
@@ -2235,7 +2235,7 @@ section {
 #footer .footer-top .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #1e4356;
+  background: black;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -2248,7 +2248,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-  background: #68A4C4;
+  background: #3bd30d;
   color: #fff;
   text-decoration: none;
 }
@@ -2256,7 +2256,7 @@ section {
 #footer .footer-top h4 {
   font-size: 18px;
   font-weight: 600;
-  color: #a2cce3;
+  color: beige;
   position: relative;
   padding-bottom: 12px;
 }
@@ -2273,7 +2273,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #a2cce3;
+  color: white;
   font-size: 18px;
   line-height: 1;
 }
@@ -2296,7 +2296,7 @@ section {
 }
 
 #footer .footer-top .footer-links ul a:hover {
-  color: #a2cce3;
+  color: #3bd30d;
 }
 
 #footer .footer-top .footer-contact {
@@ -2320,5 +2320,5 @@ section {
 }
 
 #footer .credits a {
-  color: #a2cce3;
+  color: #3bd30d;
 }

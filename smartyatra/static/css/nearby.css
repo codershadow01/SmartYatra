@@ -34,7 +34,7 @@
 
 .box1 {
     margin: 1px;
-    background-color: #025464;
+    background-color: beige;
     border-radius: 10px;
 }
 
@@ -157,6 +157,6 @@
 }
 
 .stopHeading{
-    color: grey;
+    color: black;
 }
 

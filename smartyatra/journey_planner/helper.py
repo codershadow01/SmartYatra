@@ -6,6 +6,7 @@ from .models import Nodes
 from .models import Edges
 from geopy.geocoders import Nominatim
 import requests
+import json
 
 
 def get_geohash(node):
@@ -91,22 +92,33 @@ def duration(lat1, lon1, lat2, lon2):
 
 
 #a*search algorithm to find path between source and destination
-        
+
+def get_lat(node):
+    return node.lat
+
+def get_lon(node):
+    return node.lon
+
+
+df2 = pd.DataFrame(Nodes.objects.all(),columns=["Nodes"])
+df2['lat'] = df2['Nodes'].apply(get_lat) 
+df2['lon'] = df2['Nodes'].apply(get_lon)
+
+
 def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     q = []
     res = []
     path = []
     total_time = []
 
-
-    center_geohash = geohash.encode(src1, src2, precision=7)
-    center_geohash1 = geohash.encode(dest1,dest2,precision=7)
-    source = Nodes.objects.create(name='source', lat=src1, lon=src2, geohash=center_geohash)
-    destination = Nodes.objects.create(name='destination', lat=dest1, lon=dest2, geohash=center_geohash1)
+    source = df2[(df2['lat'] == (src1)) & (df2['lon'] == (src2))]
+    source = source.iloc[0]['Nodes']
+    destination = df2[(df2['lat'] == (dest1)) & (df2['lon'] == (dest2))]
+    destination = destination.iloc[0]['Nodes']
     
     for i in range(len(arr1)):
         temp = []
-        if(source.lat == arr1.iloc[i]['Nodes'].lat and source.lon == arr1.iloc[i]['Nodes'].lon):
+        if((source.lat == arr1.iloc[i]['Nodes'].lat) and (source.lon == arr1.iloc[i]['Nodes'].lon)):
             continue
         temp.append(('walk', source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon))
         q.append((source,arr1.iloc[i]['Nodes'],temp,10)) 
@@ -152,4 +164,56 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     path.append(res)
     path.append(total_time)
     return path
+
+
+
+# Nearby-services
+
+
+def get_geohash_five(node):
+    s = node.geohash[:-2]
+    return s
+
+
+df1 = pd.DataFrame(Nodes.objects.all(),columns=["Nodes"])
+df1['geohash'] = df1['Nodes'].apply(get_geohash_five)
+
+def find_nearby_services(latitude, longitude, precision=5, max_distance=None):
     
+    Bus = []
+    Auto = []
+    center_geohash = geohash.encode(latitude, longitude, precision=precision)
+    neighbor_geohashes = neighbors(center_geohash) + [center_geohash]
+
+    # Query your database using the geohashes
+    nearby_points = df1[df1['geohash'].isin(neighbor_geohashes)]
+
+    # Calculate exact distances and filter by max_distance
+    if max_distance:
+        nearby_points['distance'] = nearby_points.apply(
+            lambda row: haversine_distance(latitude, longitude, row['latitude'], row['longitude']),
+            axis=1
+        )
+        nearby_points = nearby_points[nearby_points['distance'] <= max_distance]
+
+
+    for i in range(len(nearby_points)):
+        a = 0
+        b = 0
+        node1 = nearby_points.iloc[i]['Nodes']
+        neighbours = node1.outgoing_edges.all()
+        for i in neighbours:
+            if a==1 and b==1:
+                break
+            s = i.vehicle_name
+            if (s[0] == 'B') and (b == 0):
+                Bus.append((node1.name, node1.lat, node1.lon))
+                b = 1
+            elif (s[0] == 'A') and (a == 0):
+                Auto.append((node1.name, node1.lat, node1.lon))
+                a = 1
+
+    res = []
+    res.append(Bus)
+    res.append(Auto)
+    return res 

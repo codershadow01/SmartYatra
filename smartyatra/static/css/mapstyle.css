@@ -8,7 +8,7 @@
 }
 
 #attractive-heading {
-    color: #025464;
+    color: black;
     opacity: 0;
     animation: appear 1s forwards;
 }
@@ -83,7 +83,13 @@ button:hover {
 
 .box1 {
     margin: 1px;
-    background-color: #025464;
+    background-color: beige;
+    border-radius: 10px;
+}
+
+.box1 {
+    margin: 1px;
+    background-color: beige;
     border-radius: 10px;
 }
 
@@ -150,6 +156,7 @@ button:hover {
     justify-content: center;
     width: 80%;
     margin: 2%;
+    margin-left:10%;
 }
 
 .Col-2 {
@@ -218,11 +225,11 @@ button:hover {
     justify-content: center;
     margin: 5%;
     align-items: center;
-    background-color: #025464;
+    background-color: black;
 }
 
 .col{
-   background-color: #025464;
+   background-color: black;
    justify-self: center;
    border-width: 20%;   
 }
@@ -245,7 +252,7 @@ button:hover {
 }
 
 .row {
-    background-color: #025464;
+    background-color:black;
 }
 
 #data-body td {
@@ -271,7 +278,7 @@ button:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 30%;
 }
 
 .tableBusImage {
@@ -284,7 +291,7 @@ button:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 30%;
 }
 
 .tableArrowImage {
@@ -292,4 +299,9 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
     width: 30%;
+}
+
+.t1{
+    font-weight: bold;
+    color: black;
 }

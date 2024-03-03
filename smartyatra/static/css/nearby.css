@@ -8,7 +8,7 @@
 }
 
 #attractive-heading {
-    color: #025464;
+    color: black;
     opacity: 0;
     animation: appear 1s forwards;
 }

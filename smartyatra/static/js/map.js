@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var waynames=[];
 
   if (routesDataValues.length > 0) {
-    console.log(routesDataValues);
     var lastIndex = routesDataValues.length - 1;
     var waypoints = [];
     routesDataValues.forEach(function (route,index) {
@@ -34,11 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
           waynames.push(cleanedRouteName);
 
           if(index == lastIndex){
-            console.log("i am the last")
             waypoints.push(L.latLng(route[5], route[6]));
             var cleanedRouteName = route[4].replace(/^\\u0027|\\u0027$/g, '');
             waynames.push(cleanedRouteName);
-            console.log(waypoints)
           }
     });
 

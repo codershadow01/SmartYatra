@@ -26,11 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (routesDataValues.length > 0) {
     console.log(routesDataValues);
+    var lastIndex = routesDataValues.length - 1;
     var waypoints = [];
-    routesDataValues.forEach(function (route) {
-          waypoints.push(L.latLng(route[5], route[6]));
+    routesDataValues.forEach(function (route,index) {
+          waypoints.push(L.latLng(route[2], route[3]));
           var cleanedRouteName = route[1].replace(/^\\u0027|\\u0027$/g, '');
           waynames.push(cleanedRouteName);
+
+          if(index == lastIndex){
+            console.log("i am the last")
+            waypoints.push(L.latLng(route[5], route[6]));
+            var cleanedRouteName = route[4].replace(/^\\u0027|\\u0027$/g, '');
+            waynames.push(cleanedRouteName);
+            console.log(waypoints)
+          }
     });
 
     L.Routing.control({

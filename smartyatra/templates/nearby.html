@@ -48,11 +48,7 @@ SmartPlanner
               </div>
             </div>
             {% if services %}
-              <script>
-                console.log("hii");
-                var jsonData = {{ services|safe }};
-                console.log(jsonData);
-              </script>
+            <input type="hidden" id="nearby-stops" value="{{ services|escapejs }}">
             {% endif %}
 
              <!-- this is different services -->

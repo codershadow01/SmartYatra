@@ -93,10 +93,10 @@ SmartPlanner
       </div>
       <!-- this box for showing the bus schedule -->
       <div class="box1">
-        <div class="container2">
-          <table class="table table-borderless" id="data-table">
-            <tbody id="data-body">
               {% for r in routes %}
+              <div class="container2">
+              <table class="table table-borderless" id="data-table">
+              <tbody id="data-body">
               {% for i in r %}
               <!-- row1 -->
               <tr>
@@ -138,10 +138,10 @@ SmartPlanner
               </tr>
               {% endif %}
               {% endfor %}
-              {% endfor %}
             </tbody>
           </table>
         </div>
+              {% endfor %}
       </div>
       <div class="box1">
         <div class="container2">

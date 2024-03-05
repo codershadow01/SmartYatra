@@ -69,7 +69,7 @@ class planner(View):
         print(type(routes_list))
         print("hello")   
 
-        return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination,'routes_list':routes_list, 'travel_time': travel_time})
+        return render(request,'planner.html', {'routes': routes[0], 'source': source, 'destination': destination,'routes_list':routes_list, 'travel_time': travel_time})
 
 
 def about(request):

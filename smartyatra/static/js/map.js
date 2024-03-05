@@ -1,4 +1,3 @@
-console.log("In map.js")
 document.addEventListener("DOMContentLoaded", function () {
   var map = L.map('map').setView([25.3356, 82.9221], 11);
 

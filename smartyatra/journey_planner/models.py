@@ -19,7 +19,4 @@ class Edges(models.Model):
     weight = models.FloatField()
 
     def __str__(self):
-        return (self.node1.name + ' - ' + self.node2.name)
-    
-
-
+        return (self.node1.name + ' - ' + self.node2.name + ' - ' + self.vehicle_name)

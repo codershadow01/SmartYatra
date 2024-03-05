@@ -7,7 +7,7 @@ from .helper import find_nearest_points, search_algo, find_nearby_services
 from django import forms
 from .models import Nodes, Edges
 import json
-
+from django.http import JsonResponse
 
 def hpage(request):
     return render(request, "index.html")
@@ -39,9 +39,37 @@ class planner(View):
         arr2 = find_nearest_points(lat2, lon2, precision=7)
 
         routes = search_algo(lat1, lon1, lat2, lon2, arr1, arr2)
-        json_arr1 = json.dumps(routes)
         
-        return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination, 'json_data':json_arr1})
+        route_dict = {}
+        routes_list = []
+        travel_time = routes[1]
+        # travel_time = json.dumps(travel_time)
+        for route in routes[0][0]:
+            mode = route[0]
+            node1 = {
+                "node_name":route[1],
+                "lat":route[2],
+                "lon":route[3]
+            }
+            node2    = {
+                "node_name":route[4],
+                "lat":route[5],
+                "lon":route[6]
+            }
+            temp_dict = {"mode":mode,"node1":node1,"node2":node2}
+            routes_list.append(temp_dict)
+
+
+        routes_list = json.dumps(routes_list)
+
+        # routes_list = str(routes_list)
+
+        print("Travel time : ",travel_time)
+        print(routes_list)
+        print(type(routes_list))
+        print("hello")   
+
+        return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination,'routes_list':routes_list, 'travel_time': travel_time})
 
 
 def about(request):
@@ -66,7 +94,11 @@ class nearby(View):
         lon = location.iloc[0]['Nodes'].lon
 
         arr1 = find_nearby_services(lat, lon, precision=5)
-        services = [{'bus':arr1[0]}, {'auto':arr1[1]}]
-        json_arr1 = json.dumps(services)
-        print(json_arr1)
-        return render(request,'nearby.html', {'services':json_arr1, 'location': location.iloc[0]['Nodes'].name})
+        
+        with open('data.json', 'w') as f:
+            json.dump(arr1, f)
+
+        return render(request,'nearby.html', {'services': arr1, 'location': location.iloc[0]['Nodes'].name})
+    
+def login(request):
+    return render(request,'login.html')

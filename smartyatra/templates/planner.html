@@ -60,7 +60,12 @@ SmartPlanner
         </div>
       </div>
       <!-- this is time showing for cycle,walk,bike -->
-      {% if routes %}
+      {% if routes_list %}
+      <script>
+        console.log("Hello");
+        data_array = JSON.parse('{{routes_list|safe}}')
+        console.log(data_array)
+      </script>
       <div class="box1">
         <div class="container2">
           <div class="col1">
@@ -144,7 +149,7 @@ SmartPlanner
       <div class="box1">
            <div class = "container2">
               <div class="total-time">
-                {% for r in routes.1 %}
+                {% for r in travel_time %}
                 <h5 class="total-travelling-time">
                   Total travelling time : {{r}} minutes
                 </h5>

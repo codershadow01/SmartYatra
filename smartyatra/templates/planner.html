@@ -111,7 +111,7 @@ SmartPlanner
                             Route - {{ forloop.counter }}
                             <div class="total-time">
                               <p class="tt">
-                                {{ travel_time.forloop.counter0 }}
+                                {{ r.1 }}
                               </p>
                             </div>
                         </button>
@@ -121,7 +121,8 @@ SmartPlanner
                         <div class="accordion-body">
                             <table class="table table-borderless" id="data-table">
                                 <tbody id="data-body">
-                                    {% for i in r %}
+                                    {% for i in r.0 %}
+
                                     <!-- row1 -->
                                     <tr>
                                         <td>

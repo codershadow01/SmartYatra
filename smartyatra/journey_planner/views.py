@@ -42,7 +42,7 @@ class planner(View):
         
         route_dict = {}
         routes_list = []
-        travel_time = routes[1]
+        # travel_time = routes[1]
         # travel_time = json.dumps(travel_time)
         for route in routes[0][0]:
             mode = route[0]
@@ -64,12 +64,12 @@ class planner(View):
 
         # routes_list = str(routes_list)
 
-        print("Travel time : ",travel_time)
-        print(routes_list)
-        print(type(routes_list))
-        print("hello")   
+        # print("Travel time : ",travel_time)
+        # print(routes_list)
+        # print(type(routes_list))
+        # print("hello")   
 
-        return render(request,'planner.html', {'routes': routes[0], 'source': source, 'destination': destination,'routes_list':routes_list, 'travel_time': travel_time})
+        return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination,'routes_list':routes_list})
 
 
 def about(request):

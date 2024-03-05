@@ -108,8 +108,8 @@ df2['lon'] = df2['Nodes'].apply(get_lon)
 def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     q = []
     res = []
-    path = []
-    total_time = []
+    # path = []
+    # total_time = []
 
     source = df2[(df2['lat'] == (src1)) & (df2['lon'] == (src2))]
     # print(src1, src2)
@@ -141,8 +141,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         q.pop(0)
 
         if cur[1].lat==dest1 and cur[1].lon==dest2: 
-            res.append(cur[2])
-            total_time.append(cur[3])
+            res.append((cur[2],cur[3]))
             continue
             
         flag = 0
@@ -152,8 +151,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
                 time = 20*haversine_distance(cur[1].lat, cur[1].lon, destination.lat, destination.lon)
                 time = round(time, 2)
                 cur[2].append(('Walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon, time))
-                res.append(cur[2])
-                total_time.append(cur[3]+time)
+                res.append((cur[2],cur[3]+time))
                 flag = 1
                 break
 
@@ -168,9 +166,8 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
             temp.append((i.vehicle_name, cur[1].name, cur[1].lat, cur[1].lon, i.node2.name, i.node2.lat, i.node2.lon, i.weight))
             q.append((cur[1],i.node2,temp,i.weight+cur[3]))
 
-    path.append(res)
-    path.append(total_time)
-    return path
+    
+    return res
 
 
 

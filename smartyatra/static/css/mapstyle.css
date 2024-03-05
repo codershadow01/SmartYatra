@@ -264,21 +264,19 @@ button:hover {
 }
 
 .locationName{
-    /* margin-top: 5%;
-    font-weight: 700;
-    font-variant-caps: all-small-caps;
-    font-stretch: expanded; */
     font-size: 73%;
     margin-top: 1%;
 }
 
 .mode{
-    /* margin-top: 5%;
-    font-weight: 700;
-    font-variant-caps: all-small-caps;
-    font-stretch: expanded; */
     font-size: 73%;
     margin-top: -1%;
+}
+
+.mode1{
+    font-size: 73%;
+    margin-top: -1%;
+    margin-right: -10%;
 }
 
 .arrowRow{
@@ -319,12 +317,33 @@ button:hover {
     color: black;
 }
 
+
+.accordion{
+    width: 100%;
+    margin: 3%;
+}
+
+.accordion-item:first-of-type .accordion-button{
+    background: white;
+}
+
+.suggested{
+    margin-top: 2%;
+}
+
+.heading-2{
+    color: rgb(207, 199, 199);
+    margin-left: 40%;
+}
+
 .total-time{
-    background-color: beige;
-    margin: 2%;
+    display: flex !important;
+    width: 77%;
+    justify-content: center;
+    align-items: center;
 }
 
-.total-travelling-time{
-    margin-top:2%;
+.tt{
+    margin-bottom: -1%;
+    margin-left:54%;
 }
-

@@ -125,7 +125,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
             continue
         time = 20*haversine_distance(source.lat, source.lon, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon)
         time = round(time, 2)
-        temp.append(('walk', source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon, time))
+        temp.append(('Walk', source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon, time))
         q.append((source,arr1.iloc[i]['Nodes'],temp,time)) 
 
     if(not q):
@@ -151,7 +151,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
             if(obj.lat == cur[1].lat and obj.lon == cur[1].lon):
                 time = 20*haversine_distance(cur[1].lat, cur[1].lon, destination.lat, destination.lon)
                 time = round(time, 2)
-                cur[2].append(('walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon, time))
+                cur[2].append(('Walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon, time))
                 res.append(cur[2])
                 total_time.append(cur[3]+time)
                 flag = 1

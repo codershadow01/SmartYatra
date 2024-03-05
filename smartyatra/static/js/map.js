@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }).addTo(map);
 
   const routes_list = JSON.parse(document.getElementById('routes_list').value);
-
+  
   if (routes_list.length >= 1) {
 
     var waynames = [];
@@ -29,5 +29,30 @@ document.addEventListener("DOMContentLoaded", function () {
       marker.bindPopup(waynames[index]).openPopup();
     });
   }
+
+  var currentTime = new Date();
+  var hours = currentTime.getHours();
+  var minutes = currentTime.getMinutes();
+  var seconds = currentTime.getSeconds();
+  
+  console.log(hours + ":" + minutes + ":" + seconds);
+
+  // Get current date and time
+var currentTime = new Date();
+
+// Set options for Indian time zone
+var options = {
+    timeZone: 'Asia/Kolkata',
+    hour12: false, // Set to true if you want 12-hour format
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+};
+
+// Get current time in Indian time zone format
+var indianTime = currentTime.toLocaleTimeString('en-IN', options);
+
+console.log("Current time in India: " + indianTime);
+
 
 });

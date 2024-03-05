@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
    
   const heading = document.getElementById('attractive-heading');
-  const texts = ["Welcome to SmartYatra!", "Plan your journey here!"];
+  const texts = ["Find Public Transport!"];
   let textIndex = 0;
   let charIndex = 0;
 
@@ -12,11 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
       setTimeout(displayText, 100);
     } else {
       charIndex = 0;
-      textIndex = (textIndex + 1) % texts.length;
-      setTimeout(() => {
-        heading.textContent = '';
-        displayText(); 
-      }, 1000);
+      textIndex++;
     }
   }
   displayText();

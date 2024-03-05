@@ -170,3 +170,113 @@
     margin-left: 40%;
 }
 
+.box2 {
+    margin: 1px;
+    background-color: beige;
+    border-radius: 10px;
+}
+
+.container2 {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+    align-items: center;
+    /* margin-bottom: 5%; */
+}
+
+
+#data-table {
+    background-color: white;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+.table-borderless{
+    margin-right: 0%;
+    margin-left: 0%;
+}
+ 
+#data-body{
+     border-radius: 10px;
+}
+ 
+#data .row {
+     background-color:black;
+}
+
+#data-body td {
+    border-radius: 10px;
+    font-size: 18px;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.locationName{
+    margin-top: 9%;
+    font-weight: 700;
+    font-variant-caps: all-small-caps;
+    font-stretch: expanded;
+}
+
+.arrowRow{
+    height: 10%;
+}
+
+.tableBusImg1 {
+    display: block;
+    margin-left: 30px;
+    margin-right: auto;
+    width: 30%;
+}
+
+.tableBusImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.tableAutoImg1 {
+    display: block;
+    margin-left: 30px;
+    margin-right: auto;
+    width: 30%;
+}
+
+.tableAutoImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+.tableArrowImg1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.tableArrowImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-top: -10%;
+    margin-bottom: -20%;
+}
+
+.t1{
+    font-weight: bold;
+    color: black;
+}
+
+.total-time{
+    background-color: beige;
+    margin: 2%;
+}
+
+.total-travelling-time{
+    margin-top:2%;
+}
+

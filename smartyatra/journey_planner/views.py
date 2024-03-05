@@ -95,10 +95,22 @@ class nearby(View):
 
         arr1 = find_nearby_services(lat, lon, precision=5)
         
-        with open('data.json', 'w') as f:
-            json.dump(arr1, f)
+        # with open('data.json', 'w') as f:
+        #     json.dump(arr1, f)
+        # for i in arr1:
+        res = []
+        for service in arr1:
+            mode=service[0]
+            node={
+                "node_name":service[1],
+                "lat":service[2],
+                "lon":service[3]
+            }
+            temp_dic={'mode':mode,'node':node}
+            res.append(temp_dic)
 
-        return render(request,'nearby.html', {'services': arr1, 'location': location.iloc[0]['Nodes'].name})
+        res = json.dumps(res)
+        return render(request,'nearby.html', {'services': res,'list':arr1, 'location': location.iloc[0]['Nodes'].name})
     
 def login(request):
     return render(request,'login.html')

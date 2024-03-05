@@ -180,8 +180,7 @@ df1['geohash'] = df1['Nodes'].apply(get_geohash_five)
 
 def find_nearby_services(latitude, longitude, precision=5, max_distance=None):
     
-    Bus = []
-    Auto = []
+    res = []
     center_geohash = geohash.encode(latitude, longitude, precision=precision)
     neighbor_geohashes = neighbors(center_geohash) + [center_geohash]
 
@@ -207,13 +206,11 @@ def find_nearby_services(latitude, longitude, precision=5, max_distance=None):
                 break
             s = i.vehicle_name
             if (s[0] == 'B') and (b == 0):
-                Bus.append((node1.name, node1.lat, node1.lon))
+                res.append(('Bus',node1.name, node1.lat, node1.lon))
                 b = 1
             elif (s[0] == 'A') and (a == 0):
-                Auto.append((node1.name, node1.lat, node1.lon))
+                res.append(('Auto',node1.name, node1.lat, node1.lon))
                 a = 1
 
-    res = []
-    res.append(Bus)
-    res.append(Auto)
+    
     return res 

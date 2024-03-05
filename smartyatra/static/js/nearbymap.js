@@ -5,23 +5,17 @@ document.addEventListener("DOMContentLoaded", function () {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    var stops=this.getElementById("nearby-stops");
-    console.log(stops.value);
+    var services = JSON.parse(document.getElementById('nearby-stops').value);
 
-    function extractData(dataString) {
-      var routess = dataString.slice(2, -2).split("), (");
-      var routesDataValues = [];
-      routess.forEach(function (routesString) {
-        var routesValues = routesString.replace(/[\(\)]/g, '').split(", ");
-        var routes = routesValues.map(function (value) {
-          return isNaN(value) ? value : parseFloat(value);
-        });
-        routesDataValues.push(routes);
+    if (services.length > 0) {
+      waypoints = [];
+      services.forEach(function (stops) {
+        waypoints.push(L.latLng(stops.node.lat, stops.node.lon));
       });
-      return routesDataValues;
+      
+      waypoints.forEach(function (waypoint,index) {
+        var marker=L.marker(waypoint).addTo(map);
+        marker.bindPopup(services[index].node.node_name).openPopup();
+      });
     }
-   
-    var routesDataValues = extractData(stops.value);
-    console.log(routesDataValues);
-
 });   

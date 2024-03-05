@@ -61,11 +61,6 @@ SmartPlanner
       </div>
       <!-- this is time showing for cycle,walk,bike -->
       {% if routes_list %}
-      <script>
-        console.log("Hello");
-        data_array = JSON.parse('{{routes_list|safe}}')
-        console.log(data_array)
-      </script>
       <div class="box1">
         <div class="container2">
           <div class="col1">
@@ -81,7 +76,7 @@ SmartPlanner
               <img class="img11" src="\static\img\b1.png" alt="">
             </div>
             <div class="timewa">
-              <p class="t1" >60 min</p>
+              <p class="t1">60 min</p>
             </div>
           </div>
           <div class="col3">
@@ -101,61 +96,63 @@ SmartPlanner
         <div class="container2">
           <table class="table table-borderless" id="data-table">
             <tbody id="data-body">
-              {% for r in routes.0 %}
-                {% for i in r %}
-                  <tr>
-                      <td>
-                        <div class="tableBusImage">
-                          <img class="tableBusImg1" src="\static\img\buss.png" alt="">
-                        </div>
-                      </td>
-                      <td>
-                        <h5 class="locationName" style="color: green;">{{i.1}}</h5>
-                      </td>
-                      <!-- {% if forloop.first %} -->
-                        <td>
-                          <!-- <h5 class="locationName" style="color: black;">{{routes.1}} mins</h5> -->
-                        </td>
-                      <!-- {% endif %} -->
-                    </tr>  
-                    <tr>
-                      <td class="tableArrow">
-                        <div class="tableArrowImage">
-                          <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
-                        </div>
-                      </td>
-                      <td></td>
-                      <td></td>
-                  </tr>
-                  {% if forloop.last %}
-                  <tr>
-                    <td>
-                      <div class="tableBusImage">
-                        <img class="tableBusImg1" src="\static\img\buss.png" alt="">
-                      </div>
-                    </td>
-                    <td>
-                      <h5 class="locationName" style="color: green;">{{i.4}}</h5>
-                    </td>
-                    <td> </td>
-                  </tr>
-                  {% endif %}
-                {% endfor %}
+              {% for r in routes %}
+              {% for i in r %}
+              <!-- row1 -->
+              <tr>
+                <td>
+                  <div class="tableBusImage">
+                    <img class="tableBusImg1" src="\static\img\dot.png" alt="">
+                  </div>
+                </td>
+                <td>
+                  <h5 class="locationName" style="color: green">{{i.1}}</h5>
+                </td>
+                <td></td>
+              </tr>
+              <!-- row2 -->
+              <tr>
+                <td class="tableArrow">
+                  <div class="tableArrowImage">
+                    <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
+                  </div>
+                </td>
+                <td>
+                  <h5 class="mode" style="color: gray">{{i.0}}</h5>
+                </td>
+                <td>
+                  <!-- time -->
+                </td>
+              </tr>
+              {% if forloop.last %}
+              <tr>
+                <td>
+                  <div class="tableBusImage">
+                    <img class="tableBusImg1" src="\static\img\dot.png" alt="">
+                  </div>
+                </td>
+                <td>
+                  <h5 class="locationName" style="color: green;">{{i.4}}</h5>
+                </td>
+                <td></td>
+              </tr>
+              {% endif %}
+              {% endfor %}
               {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
       <div class="box1">
-           <div class = "container2">
-              <div class="total-time">
-                {% for r in travel_time %}
-                <h5 class="total-travelling-time">
-                  Total travelling time : {{r}} minutes
-                </h5>
-                {% endfor %}
-              </div>
-           </div>
+        <div class="container2">
+          <div class="total-time">
+            {% for r in travel_time %}
+            <h5 class="total-travelling-time">
+              Total travelling time : {{r}} minutes
+            </h5>
+            {% endfor %}
+          </div>
+        </div>
       </div>
       {% endif %}
     </div>
@@ -172,8 +169,8 @@ SmartPlanner
   </div>
 </main>
 
-{% if routes %}
-<input type="hidden" id="routes-data" value="{{ routes.0|escapejs }}">
+{% if routes_list %}
+<input type="hidden" id="routes_list" value='{{ routes_list|safe }}'>
 {% endif %}
 
 {% endblock %}

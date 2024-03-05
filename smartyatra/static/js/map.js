@@ -6,47 +6,29 @@ document.addEventListener("DOMContentLoaded", function () {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  var routesDataElements = document.getElementById('routes-data'); 
+  const routes_list = JSON.parse(document.getElementById('routes_list').value);
 
-  function extractData(dataString) {
-    var routess = dataString.slice(2, -2).split("), (");
-    var routesDataValues = [];
-    routess.forEach(function (routesString) {
-      var routesValues = routesString.replace(/[\(\)]/g, '').split(", ");
-      var routes = routesValues.map(function (value) {
-        return isNaN(value) ? value : parseFloat(value);
-      });
-      routesDataValues.push(routes);
-    });
-    return routesDataValues;
-  }
-  
- 
-  var routesDataValues = extractData(routesDataElements.value);
-  var waynames=[];
+  if (routes_list.length >= 1) {
 
-  if (routesDataValues.length > 0) {
-    var lastIndex = routesDataValues.length - 1;
+    var waynames = [];
     var waypoints = [];
-    routesDataValues.forEach(function (route,index) {
-          waypoints.push(L.latLng(route[2], route[3]));
-          var cleanedRouteName = route[1].replace(/^\\u0027|\\u0027$/g, '');
-          waynames.push(cleanedRouteName);
-
-          if(index == lastIndex){
-            waypoints.push(L.latLng(route[5], route[6]));
-            var cleanedRouteName = route[4].replace(/^\\u0027|\\u0027$/g, '');
-            waynames.push(cleanedRouteName);
-          }
-    });
+    for (let i = 0; i < routes_list.length; i++) {
+      waynames.push(routes_list[i].node1.node_name);
+      waypoints.push(L.latLng(routes_list[i].node1.lat, routes_list[i].node1.lon));
+      if (i == routes_list.length - 1) {
+        waynames.push(routes_list[i].node2.node_name);
+        waypoints.push(L.latLng(routes_list[i].node2.lat, routes_list[i].node2.lon));
+      }
+    }
 
     L.Routing.control({
       waypoints: waypoints,
-  }).addTo(map);
+    }).addTo(map);
 
-  waypoints.forEach(function (waypoint,index) {
-     var marker=L.marker(waypoint).addTo(map);
+    waypoints.forEach(function (waypoint, index) {
+      var marker = L.marker(waypoint).addTo(map);
       marker.bindPopup(waynames[index]).openPopup();
-  });
-}
+    });
+  }
+
 });

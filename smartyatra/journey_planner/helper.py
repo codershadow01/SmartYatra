@@ -112,22 +112,27 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     total_time = []
 
     source = df2[(df2['lat'] == (src1)) & (df2['lon'] == (src2))]
+    # print(src1, src2)
     source = source.iloc[0]['Nodes']
+    # print(source)
     destination = df2[(df2['lat'] == (dest1)) & (df2['lon'] == (dest2))]
     destination = destination.iloc[0]['Nodes']
+    print(destination)
     
     for i in range(len(arr1)):
         temp = []
         if((source.lat == arr1.iloc[i]['Nodes'].lat) and (source.lon == arr1.iloc[i]['Nodes'].lon)):
             continue
-        temp.append(('walk', source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon))
-        q.append((source,arr1.iloc[i]['Nodes'],temp,10)) 
+        time = 20*haversine_distance(source.lat, source.lon, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon)
+        time = round(time, 2)
+        temp.append(('walk', source.name, source.lat, source.lon, arr1.iloc[i]['Nodes'].name, arr1.iloc[i]['Nodes'].lat, arr1.iloc[i]['Nodes'].lon, time))
+        q.append((source,arr1.iloc[i]['Nodes'],temp,time)) 
 
     if(not q):
         neighbors = arr1.iloc[0]['Nodes'].outgoing_edges.all() 
         for i in neighbors:
             temp = []
-            temp.append((i.vehicle_name, arr1.iloc[0]['Nodes'].name, arr1.iloc[0]['Nodes'].lat, arr1.iloc[0]['Nodes'].lon, i.node2.name, i.node2.lat, i.node2.lon))
+            temp.append((i.vehicle_name, arr1.iloc[0]['Nodes'].name, arr1.iloc[0]['Nodes'].lat, arr1.iloc[0]['Nodes'].lon, i.node2.name, i.node2.lat, i.node2.lon, i.weight))
             q.append((arr1.iloc[0]['Nodes'].name,i.node2,temp,i.weight))
         
 
@@ -144,9 +149,11 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         for i in range(len(arr2)):
             obj = arr2.iloc[i]['Nodes']
             if(obj.lat == cur[1].lat and obj.lon == cur[1].lon):
-                cur[2].append(('walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon))
+                time = 20*haversine_distance(cur[1].lat, cur[1].lon, destination.lat, destination.lon)
+                time = round(time, 2)
+                cur[2].append(('walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon, time))
                 res.append(cur[2])
-                total_time.append(cur[3])
+                total_time.append(cur[3]+time)
                 flag = 1
                 break
 
@@ -158,7 +165,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         
         for i in neighbors:
             temp = list(cur[2])
-            temp.append((i.vehicle_name, cur[1].name, cur[1].lat, cur[1].lon, i.node2.name, i.node2.lat, i.node2.lon))
+            temp.append((i.vehicle_name, cur[1].name, cur[1].lat, cur[1].lon, i.node2.name, i.node2.lat, i.node2.lon, i.weight))
             q.append((cur[1],i.node2,temp,i.weight+cur[3]))
 
     path.append(res)

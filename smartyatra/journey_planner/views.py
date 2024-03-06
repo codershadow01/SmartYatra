@@ -64,10 +64,24 @@ class planner(View):
             }
             temp_dict = {"mode":mode,"node1":node1,"node2":node2}
             routes_list.append(temp_dict)
-
-
+        
         routes_list = json.dumps(routes_list)
 
+        total_time = routes[0][1]
+        w_time = round(total_time * 2)
+        b_time = round(total_time * 1.5)
+        c_time = round(total_time * 0.5)
+        w_h = w_time // 60
+        w_m = w_time % 60
+        b_h = b_time // 60 
+        b_m = b_time % 60
+        c_h = c_time // 60
+        c_m = c_time % 60
+
+        walk_time = f"{w_h} hr {w_m} min"
+        bicycle_time = f"{b_h} hr {b_m} min"
+        cab_time = f"{c_h} hr {c_m} min" 
+          
         # routes_list = str(routes_list)
 
         # print("Travel time : ",travel_time)
@@ -75,7 +89,7 @@ class planner(View):
         # print(type(routes_list))
         # print("hello")   
 
-        return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination,'routes_list':routes_list})
+        return render(request,'planner.html', {'routes': routes, 'source': source, 'destination': destination,'routes_list':routes_list, 'walk_time':walk_time, 'bicycle_time':bicycle_time, 'cab_time':cab_time })
 
 
 def about(request):
@@ -120,3 +134,6 @@ class nearby(View):
     
 def login(request):
     return render(request,'login.html')
+
+def personalized(request):
+    return render(request, 'personalized.html')

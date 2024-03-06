@@ -1,10 +1,35 @@
-{% extends 'base2.html' %}
 {% load static %}
-{% block title %}
-Nearby Services
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block static_files %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}{% endblock %}</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/img/logo.jpg" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <!-- base.html -->
+
+  <link rel="stylesheet" href="{% static 'vendor/animate.css/animate.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/aos/aos.css' %}" >
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" >
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" > 
+  <link rel="stylesheet" href="{% static 'vendor/boxicons/css/boxicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/glightbox/css/glightbox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}"> 
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ 
 <!-- <link rel="stylesheet" href="{% static 'css/mapstyle.css' %}"> -->
 <link rel="stylesheet" href="{% static 'css/nearby.css' %}">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -15,9 +40,51 @@ Nearby Services
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 <script src="{% static 'js/nearby.js' %}"></script>
 <script src="{% static 'js/nearbymap.js' %}"></script>
-{% endblock %}
 
-{% block body %}
+
+</head>
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        <a href="index.html"><img src="/static/img/logo.jpg" alt="" class="img-fluid img-scrolled"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{% url 'homepage' %}">Home</a></li>
+          <li><a class="active" href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'planner' %}">SmartPlanner</a></li>
+          <li><a href="{% url 'login' %}">Log in</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Footer ======= -->
+
+
+  <!-- Vendor JS Files -->
+  <!-- base.html -->
+  
+  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
 
 <main id="main-feature">
     <div class="main-div">
@@ -134,10 +201,12 @@ Nearby Services
             </div>
         </div>
     </div>
-</main>
-{% endblock %}
+  </main>
 
 <!--for dropdown -->
 <script type="text/javascript">
   $(".chosen").chosen();
 </script>
+
+</body>
+</html>

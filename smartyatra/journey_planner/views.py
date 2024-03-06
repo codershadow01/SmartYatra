@@ -78,9 +78,9 @@ class planner(View):
         c_h = c_time // 60
         c_m = c_time % 60
 
-        walk_time = f"{w_h} hr {w_m} min"
-        bicycle_time = f"{b_h} hr {b_m} min"
-        cab_time = f"{c_h} hr {c_m} min" 
+        walk_time = f"{w_h} hr {w_m} min" if w_h != 0 and w_m != 0 else f"{w_h} hr" if w_h != 0 else f"{w_m} min"
+        bicycle_time = f"{b_h} hr {b_m} min" if b_h != 0 and b_m != 0 else f"{b_h} hr" if b_h != 0 else f"{b_m} min"
+        cab_time = f"{c_h} hr {c_m} min" if c_h != 0 and c_m != 0 else f"{c_h} hr" if c_h != 0 else f"{c_m} min"
           
         # routes_list = str(routes_list)
 

@@ -136,7 +136,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
         q.pop(0)
 
         if cur[1].lat==dest1 and cur[1].lon==dest2: 
-            res.append((cur[2],cur[3]))
+            res.append((cur[2],int(cur[3])))
             continue
             
         flag = 0
@@ -146,7 +146,7 @@ def search_algo(src1,src2,dest1,dest2,arr1,arr2):
                 time = 20*haversine_distance(cur[1].lat, cur[1].lon, destination.lat, destination.lon)
                 time = round(time, 2)
                 cur[2].append(('Walk',cur[1].name,cur[1].lat, cur[1].lon, destination.name, destination.lat, destination.lon, time))
-                res.append((cur[2],cur[3]+time))
+                res.append((cur[2],int(cur[3]+time)))
                 flag = 1
                 break
 

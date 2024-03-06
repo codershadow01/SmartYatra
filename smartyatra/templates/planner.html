@@ -133,9 +133,9 @@ SmartPlanner
                           <h5 class="locationName" style="color: green">{{ i.1 }}</h5>
                         </td>
                         <td>
-                          <h5 class="timing" style="color: green">{{ i.7|format_time }}</h5>
+                          <h5 class="timing" style="color: green">{{ i.7 }}</h5>
                         </td>
-                        <script>
+                        <!-- <script>
                           function formatTime(totalMinutes) {
                             const hours = Math.floor(totalMinutes / 60);
                             const minutes = totalMinutes % 60;
@@ -155,7 +155,7 @@ SmartPlanner
                             const totalMinutes = parseFloat(element.textContent);
                             element.textContent = formatTime(totalMinutes);
                           });
-                        </script>
+                        </script> -->
                       </tr>
                       <!-- row2 -->
                       <tr>

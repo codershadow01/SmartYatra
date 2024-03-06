@@ -28,7 +28,11 @@ class planner(View):
         df = pd.DataFrame(Nodes.objects.all(),columns=["Nodes"])
         df['Name'] = df['Nodes'].apply(get_name)
         src = df[df['Name'] == (source)]
+        if(src.empty):
+            return render(request,'planner.html', {'routes': [], 'routes_list':[]})
         dest = df[df['Name'] == (destination)]
+        if(dest.empty):
+            return render(request,'planner.html', {'routes': [], 'routes_list':[]})
         lat1 = src.iloc[0]['Nodes'].lat
         lon1 = src.iloc[0]['Nodes'].lon
 

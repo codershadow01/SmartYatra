@@ -108,16 +108,11 @@ df2['lon'] = df2['Nodes'].apply(get_lon)
 def search_algo(src1,src2,dest1,dest2,arr1,arr2):
     q = []
     res = []
-    # path = []
-    # total_time = []
 
     source = df2[(df2['lat'] == (src1)) & (df2['lon'] == (src2))]
-    # print(src1, src2)
     source = source.iloc[0]['Nodes']
-    # print(source)
     destination = df2[(df2['lat'] == (dest1)) & (df2['lon'] == (dest2))]
     destination = destination.iloc[0]['Nodes']
-    print(destination)
     
     for i in range(len(arr1)):
         temp = []

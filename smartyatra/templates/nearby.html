@@ -62,21 +62,21 @@ Nearby Services
                             <img class="image00" src="\static\img\auto.svg" alt="">
                           </div>
                           <div class="col">
-                            <img class="image00" src="\static\img\busStand.png" alt="">
+                            <img class="image00" src="\static\img\directions-bus.svg" alt="">
                           </div>
                           <div class="col">
-                            <img class="image02" src="\static\img\trainn.png" alt="">
+                            <img class="image02" src="\static\img\train(1).svg" alt="">
                           </div>
                         </div>
                         <div class="row">
                           <div class="col">
-                            <img class="image00" src="\static\img\metro.png" alt="">
+                            <img class="image00" src="\static\img\metro-front.svg" alt="">
                           </div>
                           <div class="col">
-                            <img class="image00" src="\static\img\airportt.png" alt="">
+                            <img class="image00" src="\static\img\plane-departure.svg" alt="">
                           </div>
                           <div class="col">
-                            <img class="image01" src="\static\img\wheelchair.png" alt="">
+                            <img class="image01" src="\static\img\wheelchair(1).svg" alt="">
                           </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ Nearby Services
                           <td>
                             {% if i.0 == 'Bus' %}
                             <div class="tableBusImage">
-                              <img class="tableBusImg1" src="\static\img\buss.png" alt="">
+                              <img class="tableBusImg1" src="\static\img\directions-bus.svg" alt="">
                             </div>
                             {% else %}
                             <div class="tableAutoImage">
@@ -104,6 +104,15 @@ Nearby Services
                           <td>
                             <h4 class="locationName" style="color: green;">{{i.1}}</h4>
                           </td>
+                          {% if i.0 == 'Bus' %}
+                          <td>
+                            <h4 class="available" style="color: rgb(203, 200, 200);">In every 10mins</h4>
+                          </td>
+                            {% else %}
+                            <td>
+                              <h4 class="available" style="color:rgb(203, 200, 200);">Always available</h4>
+                            </td>
+                            {% endif %}
                         </tr>
                       </tbody>
                     </table>

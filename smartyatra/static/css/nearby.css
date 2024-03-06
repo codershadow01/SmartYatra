@@ -92,7 +92,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 43%;
     border-radius: 10px;
     margin-top: 2%;
 }
@@ -127,7 +127,7 @@
 }
 
 .box1 .col:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
 .form1 {
@@ -215,9 +215,21 @@
 
 .locationName{
     margin-top: 9%;
-    font-weight: 700;
+    /* font-weight: 700;
     font-variant-caps: all-small-caps;
-    font-stretch: expanded;
+    font-stretch: expanded; */
+    font-size: 15px;
+    margin-left: -57%;
+    display: inline-block;
+}
+
+.available{
+    margin-top: 9%;
+    /* font-weight: 700;
+    font-variant-caps: all-small-caps;
+    font-stretch: expanded; */
+    font-size: 12px;
+    margin-left: 31%;
 }
 
 .arrowRow{

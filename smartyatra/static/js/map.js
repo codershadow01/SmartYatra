@@ -5,8 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
+  // function convert_time(totalMinutes) {
+  //   const hours = Math.floor(totalMinutes / 60);
+  //   const minutes = totalMinutes % 60;
+  //   const roundedMinutes = minutes.toFixed(0);
+  //   let timeString = '';
+  //   if (hours > 0) {
+  //     timeString += `${hours} hr `;
+  //   }
+  //   if (roundedMinutes > 0) {
+  //     timeString += `${roundedMinutes} min`;
+  //   }
+  //   return timeString.trim();
+  // }
+
   const routes_list = JSON.parse(document.getElementById('routes_list').value);
-  
+
   if (routes_list.length >= 1) {
 
     var waynames = [];
@@ -34,25 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
   var hours = currentTime.getHours();
   var minutes = currentTime.getMinutes();
   var seconds = currentTime.getSeconds();
-  
+
   console.log(hours + ":" + minutes + ":" + seconds);
 
   // Get current date and time
-var currentTime = new Date();
+  var currentTime = new Date();
 
-// Set options for Indian time zone
-var options = {
+  // Set options for Indian time zone
+  var options = {
     timeZone: 'Asia/Kolkata',
     hour12: false, // Set to true if you want 12-hour format
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit'
-};
+  };
 
-// Get current time in Indian time zone format
-var indianTime = currentTime.toLocaleTimeString('en-IN', options);
+  // Get current time in Indian time zone format
+  var indianTime = currentTime.toLocaleTimeString('en-IN', options);
 
-console.log("Current time in India: " + indianTime);
+  console.log("Current time in India: " + indianTime);
 
 
 });

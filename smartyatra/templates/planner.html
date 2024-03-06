@@ -35,7 +35,7 @@ SmartPlanner
             {% csrf_token %}
             <div class="Col-1">
               <input type="text" class="form-control" list="source_node" id="source" name="source" value="{{source}}"
-                placeholder="Enter your Location..." />
+                placeholder="Enter your location..." />
               <datalist id="source_node">
                 {% for node in nodes %}
                 <option value="{{node.name}}">{{node.name}}</option>
@@ -92,106 +92,116 @@ SmartPlanner
         </div>
       </div>
       <!-- this box for showing the bus schedule -->
-       
+
       <div class="suggested">
         <h7 class="heading-2">
-          Suggested 
+          Suggested Routes
         </h7>
       </div>
 
       {% for r in routes %}
       <div class="box1">
         <div class="container2">
-            <div class="accordion" id="accordionExample{{ forloop.counter }}">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false"
-                            aria-controls="collapse{{ forloop.counter }}">
-                            Route - {{ forloop.counter }}
-                            <div class="total-time">
-                              <p class="tt">
-                                {{ r.1 }}
-                              </p>
-                            </div>
-                        </button>
-                    </h2>
-                    <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse"
-                        aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionExample{{ forloop.counter }}">
-                        <div class="accordion-body">
-                            <table class="table table-borderless" id="data-table">
-                                <tbody id="data-body">
-                                    {% for i in r.0 %}
-
-                                    <!-- row1 -->
-                                    <tr>
-                                        <td>
-                                            <div class="tableBusImage">
-                                                <img class="tableBusImg1" src="\static\img\dot.png" alt="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5 class="locationName" style="color: green">{{ i.1 }}</h5>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    <!-- row2 -->
-                                    <tr>
-                                        <td class="tableArrow">
-                                            <div class="tableArrowImage">
-                                                <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5 class="mode" style="color: gray">{{ i.0 }}</h5>
-                                        </td>
-                                        <td>
-                                             {% if i.0 == 'Bus' %}
-                                             <h5 class="mode" style="color: rgb(195, 192, 192)">In every 10 mins</h5>
-                                             {% endif %}
-                                             {% if i.0 == 'Auto' %}
-                                             <h5 class="mode" style="color: rgb(195, 192, 192)">Always available</h5>
-                                             {% endif %}
-                                             {% if i.0 == 'Walk' %}
-                                             <h5 class="mode1" style="color: rgb(195, 192, 192)">Burn some calories</h5>
-                                             {% endif %}
-                                        </td>
-                                    </tr>
-                                    {% if forloop.last %}
-                                    <tr>
-                                        <td>
-                                            <div class="tableBusImage">
-                                                <img class="tableBusImg1" src="\static\img\dot.png" alt="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <h5 class="locationName" style="color: green;">{{ i.4 }}</h5>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    {% endif %}
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+          <div class="accordion" id="accordionExample{{ forloop.counter }}">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false"
+                  aria-controls="collapse{{ forloop.counter }}">
+                  Route - {{ forloop.counter }}
+                  <div class="total-time">
+                    <p class="tt"> 
+                      {{ r.1 }}
+                    </p>
+                  </div>
+                </button>
+              </h2>
+              <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse"
+                aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionExample{{ forloop.counter }}">
+                <div class="accordion-body">
+                  <table class="table table-borderless" id="data-table">
+                    <tbody id="data-body">
+                      {% for i in r.0 %}
+                      <!-- row1 -->
+                      <tr>
+                        <td>
+                          <div class="tableBusImage">
+                            <img class="tableBusImg1" src="\static\img\dot.png" alt="">
+                          </div>
+                        </td>
+                        <td>
+                          <h5 class="locationName" style="color: green">{{ i.1 }}</h5>
+                        </td>
+                        <td>
+                          <h5 class="timing" style="color: green">{{ i.7|format_time }}</h5>
+                        </td>
+                        <script>
+                          function formatTime(totalMinutes) {
+                            const hours = Math.floor(totalMinutes / 60);
+                            const minutes = totalMinutes % 60;
+                            let formattedTime = '';
+                            if (hours > 0) {
+                              formattedTime += hours + ' hr ';
+                            }
+                            if (minutes > 0) {
+                              formattedTime += minutes + ' min';
+                            }
+                            return formattedTime.trim();
+                          }
+                        
+                          const timeElements = document.querySelectorAll('.timing');
+                          console.log(timeElements);
+                          timeElements.forEach(element => {
+                            const totalMinutes = parseFloat(element.textContent);
+                            element.textContent = formatTime(totalMinutes);
+                          });
+                        </script>
+                      </tr>
+                      <!-- row2 -->
+                      <tr>
+                        <td class="tableArrow">
+                          <div class="tableArrowImage">
+                            <img class="tableArrowImg1" src="\static\img\redArrow.png" alt="">
+                          </div>
+                        </td>
+                        <td>
+                          <h5 class="mode" style="color: gray">{{ i.0 }}</h5>
+                        </td>
+                        <td>
+                          {% if i.0 == 'Bus' %}
+                          <h5 class="mode" style="color: rgb(195, 192, 192)">In every 10 mins</h5>
+                          {% endif %}
+                          {% if i.0 == 'Auto' %}
+                          <h5 class="mode" style="color: rgb(195, 192, 192)">Always available</h5>
+                          {% endif %}
+                          {% if i.0 == 'Walk' %}
+                          <h5 class="mode1" style="color: rgb(195, 192, 192)">Burn some calories</h5>
+                          {% endif %}
+                        </td>
+                      </tr>
+                      {% if forloop.last %}
+                      <tr>
+                        <td>
+                          <div class="tableBusImage">
+                            <img class="tableBusImg1" src="\static\img\dot.png" alt="">
+                          </div>
+                        </td>
+                        <td>
+                          <h5 class="locationName" style="color: green;">{{ i.4 }}</h5>
+                        </td>
+                        <td></td>
+                      </tr>
+                      {% endif %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
           </div>
-        
-    </div>    
-    {% endfor %}
-      <!-- <div class="box1">
-        <div class="container2">
-          <div class="total-time">
-            {% for r in travel_time %}
-            <h5 class="total-travelling-time">
-              Total travelling time : {{r}} minutes
-            </h5>
-            {% endfor %}
-          </div>
         </div>
-      </div> -->
+      </div>
+      {% endfor %}
       {% endif %}
     </div>
     <!-- this is map container -->
@@ -201,6 +211,23 @@ SmartPlanner
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=82.6007080078125%2C25.12601428552865%2C83.24340820312501%2C25.544919592476727&amp;layer=mapnik"
             style="border: 1px solid black"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="validationModal" tabindex="-1" aria-labelledby="validationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="validationModalLabel">Validation Error</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Please enter both source and destination.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

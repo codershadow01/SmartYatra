@@ -56,7 +56,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{% url 'homepage' %}">Home</a></li>
-          <li><a class="active" href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'planner' %}">SmartPlanner</a></li>
           <li><a href="{% url 'login' %}">Log in</a></li>
         </ul>
@@ -95,10 +95,10 @@
             </div>
             <div class="box1">
               <div class="container2">
-                <form class="form1" action="{% url 'nearby-services' %}" method="post">
+                <form class="form1" id="route-form" action="{% url 'nearby-services' %}" method="post">
                   {% csrf_token %}
                   <div class="Col-1">
-                    <input type="text" class="form-control" list="location_node" id="location" name="location" value="{{location}}"
+                    <input type="text" class="form-control" id="source" list="location_node" id="location" name="location" value="{{location}}"
                       placeholder="Enter your Location..." />
                       <datalist id="location_node">
                         {% for node in nodes %}
@@ -148,7 +148,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  
+
             {% if services %}
               <input type="hidden" id="nearby-stops" value='{{ services|safe }}'>
               {% for i in list %}
@@ -201,6 +202,26 @@
             </div>
         </div>
     </div>
+
+      <!-- this is alert model -->
+
+    <div class="modal fade" id="validationModal" tabindex="-1" aria-labelledby="validationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="validationModalLabel">Validation Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Please enter location
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
 <!--for dropdown -->

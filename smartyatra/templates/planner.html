@@ -60,7 +60,13 @@ SmartPlanner
         </div>
       </div>
       <!-- this is time showing for cycle,walk,bike -->
-      {% if routes_list %}
+      {% if message %}
+      <script>
+        alert("{{message}}")
+      </script>
+      {%endif%}
+      {% if routes_list%}
+      
       <div class="box1">
         <div class="container2">
           <div class="col1">

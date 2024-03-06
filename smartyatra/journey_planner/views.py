@@ -48,6 +48,8 @@ class planner(View):
         routes_list = []
         # travel_time = routes[1]
         # travel_time = json.dumps(travel_time)
+        if len(routes)==0:
+            return render(request,'planner.html', {'routes': [], 'routes_list':[],'message':"No public Routes exist yet!"})
         for route in routes[0][0]:
             mode = route[0]
             node1 = {

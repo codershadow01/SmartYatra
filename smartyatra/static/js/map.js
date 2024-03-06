@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var minutes = currentTime.getMinutes();
   var seconds = currentTime.getSeconds();
 
-  console.log(hours + ":" + minutes + ":" + seconds);
+  // console.log(hours + ":" + minutes + ":" + seconds);
 
   // Get current date and time
   var currentTime = new Date();
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Get current time in Indian time zone format
   var indianTime = currentTime.toLocaleTimeString('en-IN', options);
 
-  console.log("Current time in India: " + indianTime);
+  // console.log("Current time in India: " + indianTime);
 
 
 });
